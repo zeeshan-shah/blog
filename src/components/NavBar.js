@@ -30,36 +30,44 @@ const NavBar = () => {
     <NavLink
       className={styles.NavLink}
       activeClassName={styles.Active}
-      to="/posts/create"
+      to="/blogs/create"
     >
       <i class="fa-brands fa-blogger-b"></i>Compose Blog
     </NavLink>
   );
   const loggedInIcons = (
     <>
-      <NavLink
-        className={styles.NavLink}
-        activeClassName={styles.Active}
-        to="/liked"
-      >
-        <i className="fa-regular fa-bookmark"></i>Bookmarked
-      </NavLink>
-      <NavLink className={styles.NavLink} to="/" onClick={handleSignOut}>
-        <i className="fas fa-sign-out-alt"></i>Sign out
-      </NavLink>
-      <NavLink
-        to="/tickets"
-        className={styles.NavLink}
-        activeClassName={styles.Active}
-      >
-        <i className="fa-regular fa-envelope"></i>Contact
-      </NavLink>
-      <NavLink
-        className={styles.NavLink}
-        to={`/profiles/${currentUser?.profile_id}`}
-      >
-        <Avatar src={currentUser?.profile_image} text="Profile" height={40} />
-      </NavLink>
+        <NavLink
+            exact
+            className={styles.NavLink}
+            activeClassName={styles.Active}
+            to="/blogs/"
+            >
+            <i class="fa-solid fa-list"></i>Categories
+        </NavLink>
+        <NavLink
+            className={styles.NavLink}
+            activeClassName={styles.Active}
+            to="/liked"
+        >
+            <i className="fa-regular fa-bookmark"></i>Bookmarked
+        </NavLink>
+        <NavLink
+            to="/tickets"
+            className={styles.NavLink}
+            activeClassName={styles.Active}
+        >
+            <i className="fa-regular fa-envelope"></i>Contact
+        </NavLink>
+        <NavLink className={styles.NavLink} to="/" onClick={handleSignOut}>
+            <i className="fas fa-sign-out-alt"></i>Sign out
+        </NavLink>
+        <NavLink
+            className={styles.NavLink}
+            to={`/profiles/${currentUser?.profile_id}`}
+        >
+            <Avatar src={currentUser?.profile_image} text="Profile" height={40} />
+        </NavLink>
     </>
   );
   const loggedOutIcons = (
@@ -110,7 +118,7 @@ const NavBar = () => {
             >
               <i className="fas fa-home"></i>Home
             </NavLink>
-
+            
             {currentUser ? loggedInIcons : loggedOutIcons}
           </Nav>
         </Navbar.Collapse>
