@@ -85,15 +85,15 @@ const Blog = (props) => {
               placement="top"
               overlay={<Tooltip>You can't like your own blog!</Tooltip>}
             >
-              <i className="far fa-heart" />
+              <i className="far fa-bookmark" />
             </OverlayTrigger>
           ) : like_id ? (
             <span onClick={handleUnlike}>
-              <i className={`fas fa-heart ${styles.Heart}`} />
+              <i className={`fas fa-bookmark ${styles.Heart}`} />
             </span>
           ) : currentUser ? (
             <span onClick={handleLike}>
-              <i className={`far fa-heart ${styles.HeartOutline}`} />
+              <i className={`far fa-bookmark ${styles.HeartOutline}`} />
             </span>
           ) : (
             <OverlayTrigger
