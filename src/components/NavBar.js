@@ -48,7 +48,7 @@ const NavBar = () => {
         <NavLink
             className={styles.NavLink}
             activeClassName={styles.Active}
-            to="/liked"
+            to="/bookmarked"
         >
             <i className="fa-regular fa-bookmark"></i>Bookmarked
         </NavLink>
