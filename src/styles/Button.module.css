@@ -4,9 +4,9 @@
     border-radius: 100px;
     border-color: transparent;
     padding: 4px 10px;
-    margin-left: 2px;
-    margin-right: 2px;
     min-width: 75px;
+    margin: 2px;
+
 }
 
 .Button:hover {
@@ -42,8 +42,8 @@
 .BlueOutline,
 .Blue:hover {
 /* border: 1px solid #397367; */
-    background-color: #ffffff;
-    color: #397367;
+    background-color: #F9DB6D;
+    color: #3C1518;
 }
 
 .Black,

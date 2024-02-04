@@ -1,0 +1,65 @@
+/* BlogCarousel.module.css */
+
+.container {
+    margin: 20px;
+}
+
+.category-heading {
+    margin-top: 20px;
+}
+
+.slick-prev,
+.slick-next {
+    font-size: 24px;
+}
+
+.slick-prev {
+    left: -30px;
+}
+
+.slick-next {
+    right: -30px;
+}
+
+.slick-prev:hover,
+.slick-next:hover {
+    color: #007bff;
+}
+
+.customCard {
+    display: flex;
+    flex-direction: column;
+     /* Adjust the height as per your preference */
+    margin: 0 10px; /* Add margin to create space between cards */
+}
+
+.card-image {
+    height: 200px;
+    object-fit: cover;
+}
+
+.customCardBody {
+    flex-grow: 1 !important;
+    display: flex;
+    flex-direction: column;
+    padding: 16px;
+    height: 150px;
+}
+
+.cardTitle {
+    font-size: 1.0rem;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    -webkit-line-clamp: 2; /*  Adjust the number of lines to show */
+    line-clamp: 2; /*Adjust the number of lines to show */
+    margin-bottom: 30px;
+}
+
+.custom-card-body > * {
+    margin-bottom: 10px; /* Add space between title and button */
+}
+
+.button-container {
+    margin-top: auto; /* Push the button to the bottom */
+}

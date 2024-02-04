@@ -1,0 +1,29 @@
+.categoryContainer {
+    margin-top: 20px;
+}
+
+.categoryHeading {
+    text-align: center;
+    color: #333;
+    margin: 50px;
+}
+
+.categoryCol {
+    margin-bottom: 20px;
+}
+
+.categoryCard {
+    transition: transform 0.3s;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border: none;
+}
+
+.categoryCard:hover {
+    transform: translateY(-5px);
+}
+
+.categoryTitle {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #3C1518;
+}
