@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router";
+import { useHistory, useParams } from "react-router";
 
 
 import Form from "react-bootstrap/Form";
@@ -18,12 +18,14 @@ import { axiosReq } from "../../api/axiosDefaults";
 import NoResults from "../../assets/no-results.png";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { fetchMoreData } from "../../utils/utils";
+import PopularProfiles from "../profiles/PopularProfiles";
 
 function BlogsPage({ message, filter = "" }) {
   const [blogs, setBlogs] = useState({ results: [] });
   const [hasLoaded, setHasLoaded] = useState(false);
   const { pathname } = useLocation();
   const { category } = useParams();
+  const history = useHistory();
 
   const [query, setQuery] = useState("");
 
@@ -56,6 +58,8 @@ function BlogsPage({ message, filter = "" }) {
         setHasLoaded(true);
       } catch (err) {
         console.log(err);
+        history.push("/");
+
       }
     };
 
@@ -67,12 +71,12 @@ function BlogsPage({ message, filter = "" }) {
     return () => {
       clearTimeout(timer);
     };
-  }, [filter, query, pathname, category]);
+  }, [filter, query, pathname, category, history]);
 
   return (
     <Row className="h-100">
       <Col className="py-2 p-0 p-lg-2" lg={8}>
-        <p>Popular profiles mobile</p>
+        <PopularProfiles mobile />
         <i className={`fas fa-search ${styles.SearchIcon}`} />
         <Form
           className={styles.SearchBar}
@@ -112,7 +116,7 @@ function BlogsPage({ message, filter = "" }) {
         )}
       </Col>
       <Col md={4} className="d-none d-lg-block p-0 p-lg-2">
-        <p>Popular profiles for desktop</p>
+        <PopularProfiles />
       </Col>
     </Row>
   );
