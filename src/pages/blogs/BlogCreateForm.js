@@ -18,6 +18,7 @@ import btnStyles from "../../styles/Button.module.css";
 
 import { useHistory } from "react-router";
 import { axiosReq } from "../../api/axiosDefaults";
+import { useRedirect } from "../../hooks/useRedirect";
 
 const CATEGORY_CHOICES = [
   ['science', 'Science and Technology'],
@@ -28,6 +29,7 @@ const CATEGORY_CHOICES = [
 ];
 
 function BlogCreateForm() {
+  useRedirect("loggedOut");
   const [errors, setErrors] = useState({});
 
   const [blogData, setBlogData] = useState({
