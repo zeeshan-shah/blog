@@ -2,9 +2,10 @@ import React from "react";
 import styles from "../../styles/Blog.module.css";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import { Card, Media, OverlayTrigger, Tooltip } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import Avatar from "../../components/Avatar";
 import { axiosRes } from "../../api/axiosDefaults";
+import { MoreDropdown } from "../../components/MoreDropdown";
 
 const Blog = (props) => {
   const {
@@ -26,6 +27,20 @@ const Blog = (props) => {
 
   const currentUser = useCurrentUser();
   const is_owner = currentUser?.username === owner;
+  const history = useHistory();
+
+  const handleEdit = () => {
+    history.push(`/blogs/${category}/${id}/edit`);
+  };
+
+  const handleDelete = async () => {
+    try {
+      await axiosRes.delete(`/blogs/${category}/${id}/`);
+      history.goBack();
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   const handleLike = async () => {
     try {
@@ -69,7 +84,11 @@ const Blog = (props) => {
           </Link>
           <div className="d-flex align-items-center">
             <span>{updated_at}</span>
-            {is_owner && blogPage && "..."}
+            {is_owner && blogPage && 
+              <MoreDropdown 
+                handleEdit={handleEdit}
+                handleDelete={handleDelete}
+              />}
           </div>
         </Media>
       </Card.Body>
@@ -78,12 +97,15 @@ const Blog = (props) => {
       </Link>
       <Card.Body>
         {title && <Card.Title className="text-center">{title}</Card.Title>}
-        {content && <Card.Text>{content}</Card.Text>}
+        {/* Render paragraphs of content */}
+        {content && content.split('\n').map((paragraph, index) => (
+          <Card.Text key={index}>{paragraph}</Card.Text>
+        ))}
         <div className={styles.BlogBar}>
           {is_owner ? (
             <OverlayTrigger
               placement="top"
-              overlay={<Tooltip>You can't like your own blog!</Tooltip>}
+              overlay={<Tooltip>You can't bookmark your own blog!</Tooltip>}
             >
               <i className="far fa-bookmark" />
             </OverlayTrigger>
@@ -98,13 +120,13 @@ const Blog = (props) => {
           ) : (
             <OverlayTrigger
               placement="top"
-              overlay={<Tooltip>Log in to like blogs!</Tooltip>}
+              overlay={<Tooltip>Log in to bookmark blogs!</Tooltip>}
             >
               <i className="far fa-heart" />
             </OverlayTrigger>
           )}
           {likes_count}
-          <Link to={`/blogs/${id}`}>
+          <Link to={`/blogs/${category}/${id}`}>
             <i className="far fa-comments" />
           </Link>
           {comments_count}
