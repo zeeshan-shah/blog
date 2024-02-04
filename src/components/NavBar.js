@@ -32,19 +32,12 @@ const NavBar = () => {
       activeClassName={styles.Active}
       to="/blogs/create"
     >
-      <i class="fa-brands fa-blogger-b"></i>Compose Blog
+      <i className="fa-brands fa-blogger-b"></i>Compose Blog
     </NavLink>
   );
   const loggedInIcons = (
     <>
-        <NavLink
-            exact
-            className={styles.NavLink}
-            activeClassName={styles.Active}
-            to="/blogs/"
-            >
-            <i class="fa-solid fa-list"></i>Categories
-        </NavLink>
+
         <NavLink
             className={styles.NavLink}
             activeClassName={styles.Active}
@@ -66,12 +59,13 @@ const NavBar = () => {
             className={styles.NavLink}
             to={`/profiles/${currentUser?.profile_id}`}
         >
-            <Avatar src={currentUser?.profile_image} text="Profile" height={40} />
+            <Avatar src={currentUser?.profile_image} text={`${currentUser?.username}`} height={40} />
         </NavLink>
     </>
   );
   const loggedOutIcons = (
     <>
+
       <NavLink
         className={styles.NavLink}
         activeClassName={styles.Active}
@@ -117,6 +111,14 @@ const NavBar = () => {
               to="/"
             >
               <i className="fas fa-home"></i>Home
+            </NavLink>
+            <NavLink
+                exact
+                className={styles.NavLink}
+                activeClassName={styles.Active}
+                to="/blogs/"
+                >
+                <i className="fa-solid fa-list"></i>Categories
             </NavLink>
             
             {currentUser ? loggedInIcons : loggedOutIcons}
