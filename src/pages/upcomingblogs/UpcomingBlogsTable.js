@@ -1,15 +1,12 @@
 import React from "react";
-
 import Table from "react-bootstrap/Table";
 import Button from "react-bootstrap/Button";
-
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import { Link, useHistory } from "react-router-dom";
 import buttonStyles from "../../styles/Button.module.css";
 import classNames from "classnames";
-import moment from "moment"; // Import the moment library
+import moment from "moment";
 import { axiosReq } from "../../api/axiosDefaults";
-
 
 const UpcomingBlogsTable = ({ blogs, setBlogs }) => {
   const currentUser = useCurrentUser();
@@ -28,21 +25,20 @@ const UpcomingBlogsTable = ({ blogs, setBlogs }) => {
       }));
       history.push("/upcoming-blogs");
     } catch (err) {
-      //console.log(err);
+      // Handle error
     }
   };
 
-  // Filter out blogs older than today
   const filteredBlogs = blogs.results.filter((blog) =>
     moment(blog.release_date).isSameOrAfter(moment(), "day")
   );
 
   return (
-    <Table striped bordered hover>
+    <Table striped bordered hover responsive>
       <thead>
         <tr>
           <th>Title</th>
-          <th>Category</th>
+          <th className="d-none d-sm-table-cell">Category</th> {/* Hide on extra small screens */}
           <th>Release Date</th>
           <th>Action</th>
         </tr>
@@ -51,15 +47,16 @@ const UpcomingBlogsTable = ({ blogs, setBlogs }) => {
         {filteredBlogs.map((blog) => (
           <tr key={blog.id}>
             <td>{blog.title}</td>
-            <td>{blog.category}</td>
-            <td>{blog.release_date}</td>
+            <td className="d-none d-sm-table-cell">{blog.category}</td> {/* Hide on extra small screens */}
+            <td>{moment(blog.release_date).format("MMM DD, YYYY")}</td>
             <td>
-              {currentUser?.username === blog.owner ? (
-                <>
+              {currentUser?.username === blog.owner && (
+                <div>
                   <Link to={`/upcoming-blogs/${blog.id}/edit`}>
                     <Button
                       className={classNames(buttonStyles.Button, buttonStyles.Blue)}
                       variant="primary"
+                      size="sm"
                     >
                       Edit
                     </Button>
@@ -67,12 +64,13 @@ const UpcomingBlogsTable = ({ blogs, setBlogs }) => {
                   <Button
                     className={classNames(buttonStyles.Button, buttonStyles.Red)}
                     variant="danger"
+                    size="sm"
                     onClick={() => handleDelete(blog.id)}
                   >
                     Delete
                   </Button>
-                </>
-              ) : null}
+                </div>
+              )}
             </td>
           </tr>
         ))}
