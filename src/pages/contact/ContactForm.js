@@ -1,6 +1,9 @@
 // ContactForm.js
 import React, { useState } from "react";
 import { axiosReq } from "../../api/axiosDefaults";
+import { useRedirect } from "../../hooks/useRedirect";
+
+
 
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
@@ -21,6 +24,8 @@ const CATEGORY_CHOICES = [
 ];
 
 const ContactForm = ({ onFormSubmit }) => {
+    useRedirect("loggedOut");
+    
     const [errors, setErrors] = useState({});
     const [formData, setFormData] = useState({
         category: "",
