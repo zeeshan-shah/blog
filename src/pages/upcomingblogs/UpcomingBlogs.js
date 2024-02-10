@@ -1,7 +1,7 @@
-// UpcomingBlogs.js
 import React, { useEffect, useState } from "react";
 import UpcomingBlogsTable from "./UpcomingBlogsTable";
 import { axiosReq } from "../../api/axiosDefaults";
+
 
 const UpcomingBlogs = () => {
   const [blogs, setBlogs] = useState();
@@ -12,7 +12,6 @@ const UpcomingBlogs = () => {
       try {
         const { data } = await axiosReq.get("/upcoming-blogs/");
         setBlogs(data);
-        console.log(data);
       } catch (error) {
         console.error("Error fetching upcoming blogs", error);
       }

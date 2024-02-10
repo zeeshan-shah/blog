@@ -25,6 +25,7 @@ import { fetchMoreData } from "../../utils/utils";
 import NoResults from "../../assets/no-results.png";
 import { ProfileEditDropdown } from "../../components/MoreDropdown";
 
+
 function ProfilePage() {
   const [hasLoaded, setHasLoaded] = useState(false);
   const [profileBlogs, setProfileBlogs] = useState({ results: [] });
@@ -62,7 +63,7 @@ function ProfilePage() {
         setProfileBlogs({ results: combinedBlogs });
         setHasLoaded(true);
       } catch (err) {
-        console.log(err);
+        //console.log(err);
       }
     };
     fetchData();

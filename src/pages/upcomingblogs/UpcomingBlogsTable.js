@@ -1,12 +1,15 @@
 import React from "react";
+
 import Table from "react-bootstrap/Table";
 import Button from "react-bootstrap/Button";
+
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import { Link, useHistory } from "react-router-dom";
 import buttonStyles from "../../styles/Button.module.css";
 import classNames from "classnames";
 import moment from "moment"; // Import the moment library
 import { axiosReq } from "../../api/axiosDefaults";
+
 
 const UpcomingBlogsTable = ({ blogs, setBlogs }) => {
   const currentUser = useCurrentUser();
@@ -25,7 +28,7 @@ const UpcomingBlogsTable = ({ blogs, setBlogs }) => {
       }));
       history.push("/upcoming-blogs");
     } catch (err) {
-      console.log(err);
+      //console.log(err);
     }
   };
 

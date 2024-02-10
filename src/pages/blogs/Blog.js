@@ -1,11 +1,17 @@
 import React from "react";
+import { Link, useHistory } from "react-router-dom";
+
+import Card from 'react-bootstrap/Card';
+import Media from 'react-bootstrap/Media';
+import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
+import Tooltip from 'react-bootstrap/Tooltip';
+
 import styles from "../../styles/Blog.module.css";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
-import { Card, Media, OverlayTrigger, Tooltip } from "react-bootstrap";
-import { Link, useHistory } from "react-router-dom";
 import Avatar from "../../components/Avatar";
 import { axiosRes } from "../../api/axiosDefaults";
 import { MoreDropdown } from "../../components/MoreDropdown";
+
 
 const Blog = (props) => {
   const {
@@ -38,7 +44,7 @@ const Blog = (props) => {
       await axiosRes.delete(`/blogs/${category}/${id}/`);
       history.goBack();
     } catch (err) {
-      console.log(err);
+      // //console.log(err);
     }
   };
 
@@ -54,7 +60,7 @@ const Blog = (props) => {
         }),
       }));
     } catch (err) {
-      console.log(err);
+      //console.log(err);
     }
   };
 
@@ -70,7 +76,7 @@ const Blog = (props) => {
         }),
       }));
     } catch (err) {
-      console.log(err);
+      //console.log(err);
     }
   };
 
@@ -96,7 +102,7 @@ const Blog = (props) => {
         <Card.Img src={image} alt={title} />
       </Link>
       <Card.Body>
-        {title && <Card.Title className="text-center">{title}</Card.Title>}
+        {title && <Card.Title className={styles.CardTitle}>{title}</Card.Title>}
         {/* Render paragraphs of content */}
         {content && content.split('\n').map((paragraph, index) => (
           <Card.Text key={index}>{paragraph}</Card.Text>

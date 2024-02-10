@@ -6,6 +6,12 @@
     text-align: center;
 }
 
+.CardTitle {
+    text-align: center;
+    color: #DD7373;
+    font-weight: 800;
+}
+
 .Blog figure,
 h5 {
     margin: 0 0;
@@ -22,3 +28,4 @@ h5 {
 .HeartOutline:hover {
     color: #F9DB6D;
 }
+

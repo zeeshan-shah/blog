@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useHistory, useParams } from "react-router";
+
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
@@ -10,11 +11,11 @@ import Blog from "./Blog";
 import Comment from "../comments/Comment";
 import CommentCreateForm from "../comments/CommentCreateForm";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
-
 import InfiniteScroll from "react-infinite-scroll-component";
 import Asset from "../../components/Asset";
 import { fetchMoreData } from "../../utils/utils";
 import PopularProfiles from "../profiles/PopularProfiles";
+
 
 function BlogPage() {
   const { category, id } = useParams();

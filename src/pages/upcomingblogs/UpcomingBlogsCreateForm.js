@@ -6,14 +6,13 @@ import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
 import Alert from "react-bootstrap/Alert";
 
-
-
 import appStyles from "../../App.module.css";
 import btnStyles from "../../styles/Button.module.css";
 
 import { useHistory } from "react-router";
 import { axiosReq } from "../../api/axiosDefaults";
 import { useRedirect } from "../../hooks/useRedirect";
+
 
 const CATEGORY_CHOICES = [
   ['science', 'Science and Technology'],
@@ -52,11 +51,10 @@ function UpcomingBlogsCreateForm() {
     formData.append("release_date", release_date);
 
     try {
-        const { data } = await axiosReq.post("/upcoming-blogs/", formData);
-        console.log(data);
+        await axiosReq.post("/upcoming-blogs/", formData);
         history.goBack();
     } catch (err) {
-        console.log(err);
+        //console.log(err);
         if (err.response?.status !== 401) {
         setErrors(err.response?.data);
         }
@@ -129,6 +127,7 @@ function UpcomingBlogsCreateForm() {
 
     return (
     <Form onSubmit={handleSubmit}>
+        <h2 className="text-center">Add an upcoming blog</h2>
         <Row>
         {/* ... (other components) */}
         <Container className={appStyles.Content}>{textFields}</Container>

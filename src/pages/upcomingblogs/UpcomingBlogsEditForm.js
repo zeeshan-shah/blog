@@ -6,8 +6,6 @@ import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
 import Alert from "react-bootstrap/Alert";
 
-
-
 import appStyles from "../../App.module.css";
 import btnStyles from "../../styles/Button.module.css";
 
@@ -15,6 +13,7 @@ import { useHistory } from "react-router";
 import { axiosReq } from "../../api/axiosDefaults";
 import { useRedirect } from "../../hooks/useRedirect";
 import { useParams } from "react-router";
+
 
 const CATEGORY_CHOICES = [
   ['science', 'Science and Technology'],
@@ -80,7 +79,7 @@ function UpcomingBlogsEditForm() {
         await axiosReq.put(`/upcoming-blogs/${id}`, formData);
         history.push("/upcoming-blogs"); // Redirect to the upcoming blogs page after editing
     } catch (err) {
-        console.log(err);
+        //console.log(err);
         if (err.response?.status !== 401) {
         setErrors(err.response?.data);
         }

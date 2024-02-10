@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useHistory, useParams } from "react-router";
 
-
 import Form from "react-bootstrap/Form";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
@@ -9,16 +8,16 @@ import Container from "react-bootstrap/Container";
 
 import Blog from "./Blog";
 import Asset from "../../components/Asset";
-
 import appStyles from "../../App.module.css";
 import styles from "../../styles/BlogsPage.module.css";
 import { useLocation } from "react-router";
 import { axiosReq } from "../../api/axiosDefaults";
-
 import NoResults from "../../assets/no-results.png";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { fetchMoreData } from "../../utils/utils";
 import PopularProfiles from "../profiles/PopularProfiles";
+import { useCurrentUser } from "../../contexts/CurrentUserContext";
+
 
 function BlogsPage({ message, filter = "" }) {
   const [blogs, setBlogs] = useState({ results: [] });
@@ -26,6 +25,7 @@ function BlogsPage({ message, filter = "" }) {
   const { pathname } = useLocation();
   const { category } = useParams();
   const history = useHistory();
+  const currentUser = useCurrentUser();
 
   const [query, setQuery] = useState("");
 
@@ -57,7 +57,7 @@ function BlogsPage({ message, filter = "" }) {
         setBlogs(data);
         setHasLoaded(true);
       } catch (err) {
-        console.log(err);
+        //console.log(err);
         history.push("/");
 
       }
@@ -71,7 +71,7 @@ function BlogsPage({ message, filter = "" }) {
     return () => {
       clearTimeout(timer);
     };
-  }, [filter, query, pathname, category, history]);
+  }, [filter, query, pathname, category, history, currentUser]);
 
   return (
     <Row className="h-100">

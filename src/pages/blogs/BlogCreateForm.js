@@ -1,4 +1,7 @@
 import React, { useRef, useState } from "react";
+import { useHistory } from "react-router";
+import { axiosReq } from "../../api/axiosDefaults";
+import { useRedirect } from "../../hooks/useRedirect";
 
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
@@ -9,16 +12,12 @@ import Alert from "react-bootstrap/Alert";
 import Image from "react-bootstrap/Image";
 
 import Asset from "../../components/Asset";
-
 import Upload from "../../assets/upload.png";
 
 import styles from "../../styles/BlogCreateEditForm.module.css";
 import appStyles from "../../App.module.css";
 import btnStyles from "../../styles/Button.module.css";
 
-import { useHistory } from "react-router";
-import { axiosReq } from "../../api/axiosDefaults";
-import { useRedirect } from "../../hooks/useRedirect";
 
 const CATEGORY_CHOICES = [
   ['science', 'Science and Technology'],
@@ -72,10 +71,9 @@ function BlogCreateForm() {
 
     try {
       const { data } = await axiosReq.post(`/blogs/${category}/`, formData);
-      console.log(data);
       history.push(`/blogs/${category}/${data.id}`);
     } catch (err) {
-      console.log(err);
+      //console.log(err);
       if (err.response?.status !== 401) {
         setErrors(err.response?.data);
       }

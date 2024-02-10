@@ -1,8 +1,10 @@
 import React from "react";
 import Slider from "react-slick";
+import { Link } from "react-router-dom";
+
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
-import { Link } from "react-router-dom";
+
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import styles from "../../styles/BlogCarousel.module.css";
@@ -31,7 +33,7 @@ const BlogCarousel = ({ category, blogs }) => {
 
   return (
     <div className={styles.container}>
-      <h2 className={`${styles.categoryHeading} text-center`}>{category}</h2>
+      <h2 className={`${styles.categoryHeading} text-center mb-4`} style={{ color: '#9B2915' }}>{category}</h2>
       <Slider {...settings}>
         {blogs.map((blog) => (
           <div key={blog.id}>

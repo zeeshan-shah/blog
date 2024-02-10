@@ -1,15 +1,17 @@
-// ContactEditForm.js
 import React, { useState, useEffect } from "react";
 import { useParams, useHistory } from "react-router-dom";
 import { axiosReq } from "../../api/axiosDefaults";
+
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
 import Alert from "react-bootstrap/Alert";
+
 import appStyles from "../../App.module.css";
 import btnStyles from "../../styles/Button.module.css";
 import { useRedirect } from "../../hooks/useRedirect";
+
 
 const CATEGORY_CHOICES = [
   { value: "1", label: "Blog Inquiry" },
@@ -73,7 +75,7 @@ function ContactEditForm() {
       await axiosReq.put(`/tickets/${id}`, formData);
       history.push("/tickets"); // Redirect to the contact tickets page after editing
     } catch (err) {
-      console.log(err);
+      //console.log(err);
       if (err.response?.status !== 401) {
         setErrors(err.response?.data);
       }

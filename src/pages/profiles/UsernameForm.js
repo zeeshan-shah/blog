@@ -17,6 +17,7 @@ import {
 import btnStyles from "../../styles/Button.module.css";
 import appStyles from "../../App.module.css";
 
+
 const UsernameForm = () => {
   const [username, setUsername] = useState("");
   const [errors, setErrors] = useState({});
@@ -47,7 +48,7 @@ const UsernameForm = () => {
       }));
       history.goBack();
     } catch (err) {
-      console.log(err);
+      //console.log(err);
       setErrors(err.response?.data);
     }
   };

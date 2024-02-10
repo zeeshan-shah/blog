@@ -1,4 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
+import { useHistory, useParams } from "react-router";
+import { axiosReq } from "../../api/axiosDefaults";
 
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
@@ -8,14 +10,10 @@ import Container from "react-bootstrap/Container";
 import Alert from "react-bootstrap/Alert";
 import Image from "react-bootstrap/Image";
 
-
-
 import styles from "../../styles/BlogCreateEditForm.module.css";
 import appStyles from "../../App.module.css";
 import btnStyles from "../../styles/Button.module.css";
 
-import { useHistory, useParams } from "react-router";
-import { axiosReq } from "../../api/axiosDefaults";
 
 const CATEGORY_CHOICES = [
   ['science', 'Science and Technology'],
@@ -49,7 +47,7 @@ function BlogEditForm() {
 
         is_owner ? setBlogData({ title, category, content, image }) : history.push("/");
       } catch (err) {
-        console.log(err);
+        //console.log(err);
       }
     };
 
@@ -89,7 +87,7 @@ function BlogEditForm() {
       await axiosReq.put(`/blogs/${category}/${id}`, formData);
       history.push(`/blogs/${category}/${id}`);
     } catch (err) {
-      console.log(err);
+      //console.log(err);
       if (err.response?.status !== 401) {
         setErrors(err.response?.data);
       }

@@ -1,7 +1,9 @@
 /* BlogCarousel.module.css */
 
 .container {
-    margin: 20px;
+    margin-top: 20px;
+    margin-bottom: 40px;
+
 }
 
 .category-heading {

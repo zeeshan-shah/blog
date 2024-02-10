@@ -1,18 +1,20 @@
-// Import your CSS module for custom styles
 import styles from "../../styles/Category.module.css";
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+
 import Card from "react-bootstrap/Card";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+
 import NoResults from "../../assets/no-results.png";
 import science from "../../assets/science.jpg";
 import politics from "../../assets/politics.jpg";
 import sports from "../../assets/sports.jpg";
 import travel from "../../assets/travel.jpg";
 import programming from "../../assets/programming.jpg";
+
 
 function Category() {
   const [categories, setCategories] = useState([]);

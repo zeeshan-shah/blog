@@ -5,6 +5,7 @@ import { axiosRes } from "../../api/axiosDefaults";
 
 import styles from "../../styles/CommentCreateEditForm.module.css";
 
+
 function CommentEditForm(props) {
   const { id, content, setShowEditForm, setComments } = props;
 
@@ -34,7 +35,7 @@ function CommentEditForm(props) {
       }));
       setShowEditForm(false);
     } catch (err) {
-      console.log(err);
+      //console.log(err);
     }
   };
 

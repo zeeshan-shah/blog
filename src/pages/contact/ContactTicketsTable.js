@@ -1,13 +1,16 @@
 import React, { useState, useEffect } from "react";
-import Table from "react-bootstrap/Table";
-import Button from "react-bootstrap/Button";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import { Link, useHistory } from "react-router-dom";
+
+import Table from "react-bootstrap/Table";
+import Button from "react-bootstrap/Button";
+
 import buttonStyles from "../../styles/Button.module.css";
 import classNames from "classnames";
 import { axiosReq } from "../../api/axiosDefaults";
 import styles from "../../styles/Contact.module.css";
 import Asset from "../../components/Asset";
+
 
 const ContactTicketsTable = ({ tickets, setTickets }) => {
     const currentUser = useCurrentUser();
@@ -29,7 +32,7 @@ const ContactTicketsTable = ({ tickets, setTickets }) => {
             );
             history.push("/tickets");
         } catch (err) {
-            console.log(err);
+            //console.log(err);
         }
     };
 

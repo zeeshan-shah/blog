@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
+
 import { axiosReq } from "../../api/axiosDefaults";
 import BlogCarousel from "./BlogCarousel";
 import UpcomingBlogsTable from "../upcomingblogs/UpcomingBlogsTable";
+
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
@@ -9,13 +11,12 @@ import NoResults from "../../assets/no-results.png";
 import Asset from "../../components/Asset";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
-import btnStyles from "../../styles/Button.module.css";
 
+import btnStyles from "../../styles/Button.module.css";
 import { Link } from "react-router-dom";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
-
-
 import appStyles from "../../App.module.css";
+
 
 function HomePage({ filter = "" }) {
   const [featuredBlogs, setFeaturedBlogs] = useState({ results: [] });
@@ -61,17 +62,17 @@ function HomePage({ filter = "" }) {
 
   return (
     <>
-      <Row className="h-100">
-        <Col className="py-2 p-0 p-lg-2" lg={12}>
+      <Row className={`${appStyles.Content} ${appStyles.HomePageRow}`}>
+        <Col className={`py-2 p-0 p-lg-2 ${appStyles.HomePageCol}`} lg={12}>
           <BlogCarousel category="Featured Blogs" blogs={featuredBlogs.results} />
-          <h2>Upcoming Blogs</h2>
+          <h2 className="mt-4 mb-4 text-center" style={{ color: '#CBA328' }}>Upcoming Blogs</h2>
           {hasLoaded ? (
             <UpcomingBlogsTable blogs={upcomingBlogs} setBlogs={setUpcomingBlogs} />
           ) : (
-            <>
+            <div className="mt-3">
               <p>Loading blogs...</p>
               <Asset spinner />
-            </>
+            </div>
           )}
           {hasLoaded && upcomingBlogs.results.length === 0 && (
             <Container className={appStyles.Content}>
@@ -83,14 +84,14 @@ function HomePage({ filter = "" }) {
           {currentUser && (
             <Row className="mt-4">
               <Col md={6}>
-                <Card>
+                <Card className="h-100">
                   <Card.Body className="d-flex flex-column align-items-center">
                     <Card.Title>Create a New Blog</Card.Title>
                     <Card.Text>
                       Write and publish your latest blog post.
                     </Card.Text>
                     <Link to="/blogs/create">
-                      <Button className={`${btnStyles.Button} ${btnStyles.Blue}`} type="submit">
+                      <Button className={`${btnStyles.Button} ${btnStyles.Blue} mt-auto`} type="submit">
                         Create Blog
                       </Button>
                     </Link>
@@ -98,14 +99,14 @@ function HomePage({ filter = "" }) {
                 </Card>
               </Col>
               <Col md={6}>
-                <Card>
+                <Card className="h-100">
                   <Card.Body className="d-flex flex-column align-items-center">
                     <Card.Title>Create an Upcoming Blog</Card.Title>
                     <Card.Text>
                       Share information about your upcoming blogs.
                     </Card.Text>
                     <Link to="/upcoming-blogs/create">
-                      <Button className={`${btnStyles.Button} ${btnStyles.Blue}`} type="submit">
+                      <Button className={`${btnStyles.Button} ${btnStyles.Blue} mt-auto`} type="submit">
                         Create Upcoming Blog
                       </Button>
                     </Link>
@@ -114,7 +115,6 @@ function HomePage({ filter = "" }) {
               </Col>
             </Row>
           )}
-          
         </Col>
       </Row>
     </>
