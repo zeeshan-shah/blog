@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useHistory, useParams } from "react-router-dom";
-
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Image from "react-bootstrap/Image";
@@ -8,16 +7,13 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
 import Alert from "react-bootstrap/Alert";
-
 import { axiosReq } from "../../api/axiosDefaults";
 import {
   useCurrentUser,
   useSetCurrentUser,
 } from "../../contexts/CurrentUserContext";
-
 import btnStyles from "../../styles/Button.module.css";
 import appStyles from "../../App.module.css";
-
 
 const ProfileEditForm = () => {
   const currentUser = useCurrentUser();
@@ -33,6 +29,7 @@ const ProfileEditForm = () => {
   });
   const { name, bio, image } = profileData;
 
+  const [initialImage, setInitialImage] = useState(""); // State to store initially selected image
   const [errors, setErrors] = useState({});
 
   useEffect(() => {
@@ -42,6 +39,7 @@ const ProfileEditForm = () => {
           const { data } = await axiosReq.get(`/profiles/${id}/`);
           const { name, bio, image } = data;
           setProfileData({ name, bio, image });
+          setInitialImage(image); // Set the initially selected image
         } catch (err) {
           //console.log(err);
           history.push("/");
@@ -69,6 +67,9 @@ const ProfileEditForm = () => {
 
     if (imageFile?.current?.files[0]) {
       formData.append("image", imageFile?.current?.files[0]);
+    } else {
+      // If no new image is selected, use the initially selected image
+      formData.append("image", initialImage);
     }
 
     try {
@@ -147,12 +148,6 @@ const ProfileEditForm = () => {
                     setProfileData({
                       ...profileData,
                       image: URL.createObjectURL(e.target.files[0]),
-                    });
-                  } else {
-                    // If no file was selected, keep the existing image
-                    setProfileData({
-                      ...profileData,
-                      image: profileData.image,
                     });
                   }
                 }}
