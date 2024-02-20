@@ -148,6 +148,12 @@ const ProfileEditForm = () => {
                       ...profileData,
                       image: URL.createObjectURL(e.target.files[0]),
                     });
+                  } else {
+                    // If no file was selected, keep the existing image
+                    setProfileData({
+                      ...profileData,
+                      image: profileData.image,
+                    });
                   }
                 }}
               />
