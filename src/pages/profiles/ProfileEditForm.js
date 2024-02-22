@@ -29,17 +29,21 @@ const ProfileEditForm = () => {
   });
   const { name, bio, image } = profileData;
 
-  const [initialImage, setInitialImage] = useState(""); // State to store initially selected image
+  const [selectedImage, setSelectedImage] = useState(""); // State to store the selected image for saving
   const [errors, setErrors] = useState({});
 
   useEffect(() => {
+    let isMounted = true; // Flag to track if the component is mounted
+  
     const handleMount = async () => {
       if (currentUser?.profile_id?.toString() === id) {
         try {
           const { data } = await axiosReq.get(`/profiles/${id}/`);
           const { name, bio, image } = data;
-          setProfileData({ name, bio, image });
-          setInitialImage(image); // Set the initially selected image
+          if (isMounted) { // Check if the component is still mounted before updating state
+            setProfileData({ name, bio, image });
+            setSelectedImage(image); // Set the selected image
+          }
         } catch (err) {
           //console.log(err);
           history.push("/");
@@ -48,9 +52,15 @@ const ProfileEditForm = () => {
         history.push("/");
       }
     };
-
+  
     handleMount();
+  
+    return () => {
+      // Cleanup function to run when the component is unmounted
+      isMounted = false; // Update the flag to indicate that the component is unmounted
+    };
   }, [currentUser, history, id]);
+  
 
   const handleChange = (event) => {
     setProfileData({
@@ -65,11 +75,8 @@ const ProfileEditForm = () => {
     formData.append("name", name);
     formData.append("bio", bio);
 
-    if (imageFile?.current?.files[0]) {
-      formData.append("image", imageFile?.current?.files[0]);
-    } else {
-      // If no new image is selected, use the initially selected image
-      formData.append("image", initialImage);
+    if (selectedImage) {
+      formData.append("image", selectedImage);
     }
 
     try {
@@ -84,36 +91,6 @@ const ProfileEditForm = () => {
       setErrors(err.response?.data);
     }
   };
-
-  const textFields = (
-    <>
-      <Form.Group>
-        <Form.Label>Bio</Form.Label>
-        <Form.Control
-          as="textarea"
-          value={bio}
-          onChange={handleChange}
-          name="bio"
-          rows={7}
-        />
-      </Form.Group>
-
-      {errors?.bio?.map((message, idx) => (
-        <Alert variant="warning" key={idx}>
-          {message}
-        </Alert>
-      ))}
-      <Button
-        className={`${btnStyles.Button} ${btnStyles.Blue}`}
-        onClick={() => history.goBack()}
-      >
-        cancel
-      </Button>
-      <Button className={`${btnStyles.Button} ${btnStyles.Blue}`} type="submit">
-        save
-      </Button>
-    </>
-  );
 
   return (
     <Form onSubmit={handleSubmit}>
@@ -145,6 +122,7 @@ const ProfileEditForm = () => {
                 accept="image/*"
                 onChange={(e) => {
                   if (e.target.files.length) {
+                    setSelectedImage(e.target.files[0]);
                     setProfileData({
                       ...profileData,
                       image: URL.createObjectURL(e.target.files[0]),
@@ -153,11 +131,35 @@ const ProfileEditForm = () => {
                 }}
               />
             </Form.Group>
-            <div className="d-md-none">{textFields}</div>
           </Container>
         </Col>
         <Col md={5} lg={6} className="d-none d-md-block p-0 p-md-2 text-center">
-          <Container className={appStyles.Content}>{textFields}</Container>
+          <Container className={appStyles.Content}>
+            <Form.Group>
+              <Form.Label>Bio</Form.Label>
+              <Form.Control
+                as="textarea"
+                value={bio}
+                onChange={handleChange}
+                name="bio"
+                rows={7}
+              />
+            </Form.Group>
+            {errors?.bio?.map((message, idx) => (
+              <Alert variant="warning" key={idx}>
+                {message}
+              </Alert>
+            ))}
+            <Button
+              className={`${btnStyles.Button} ${btnStyles.Blue}`}
+              onClick={() => history.goBack()}
+            >
+              cancel
+            </Button>
+            <Button className={`${btnStyles.Button} ${btnStyles.Blue}`} type="submit">
+              save
+            </Button>
+          </Container>
         </Col>
       </Row>
     </Form>
