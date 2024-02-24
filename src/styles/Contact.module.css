@@ -75,3 +75,16 @@
     text-align: center;
     margin-bottom: 20px; /* Added margin at the bottom for space between heading and form */
 }
+
+@media (max-width: 380px) {
+    .heading {
+        margin: 50px auto 30px;
+    }
+}
+
+@media (max-width: 280px) {
+    .heading {
+        margin: 70px auto 30px;
+        font-size: 20px;
+    }
+}
