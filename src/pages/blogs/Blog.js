@@ -128,7 +128,7 @@ const Blog = (props) => {
               placement="top"
               overlay={<Tooltip>Log in to bookmark blogs!</Tooltip>}
             >
-              <i className="far fa-heart" />
+              <i className="far fa-bookmark" />
             </OverlayTrigger>
           )}
           {likes_count}
