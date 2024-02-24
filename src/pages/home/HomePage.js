@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
-
 import { axiosReq } from "../../api/axiosDefaults";
 import BlogCarousel from "./BlogCarousel";
 import UpcomingBlogsTable from "../upcomingblogs/UpcomingBlogsTable";
-
+import Advertisements from "../../components/Advertisements"; // Import the Advertisements component
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
@@ -11,12 +10,10 @@ import NoResults from "../../assets/no-results.png";
 import Asset from "../../components/Asset";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
-
 import btnStyles from "../../styles/Button.module.css";
 import { Link } from "react-router-dom";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
-import appStyles from "../../App.module.css";
-
+import appStyles from "../../styles/Homepage.module.css";
 
 function HomePage({ filter = "" }) {
   const [featuredBlogs, setFeaturedBlogs] = useState({ results: [] });
@@ -61,9 +58,11 @@ function HomePage({ filter = "" }) {
   }, [filter]);
 
   return (
-    <>
+  
       <Row className={`${appStyles.Content} ${appStyles.HomePageRow}`}>
+        
         <Col className={`py-2 p-0 p-lg-2 ${appStyles.HomePageCol}`} lg={12}>
+
           <BlogCarousel category="Featured Blogs" blogs={featuredBlogs.results} />
           <h2 className="mt-4 mb-4 text-center" style={{ color: '#CBA328' }}>Upcoming Blogs</h2>
           {hasLoaded ? (
@@ -116,8 +115,11 @@ function HomePage({ filter = "" }) {
             </Row>
           )}
         </Col>
+        {/* Render the advertisement column only on larger screens */}
+        <Advertisements />
+        
       </Row>
-    </>
+    
   );
 }
 
