@@ -4,7 +4,7 @@ import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import btnStyles from "../styles/Button.module.css";
 import NoResults from "../assets/no-results.png";
-import styles from "../styles/advertisement.module.css";
+import styles from "../styles/Advertisement.module.css";
 
 const Advertisements = () => {
   const [ads, setAds] = useState([]);
