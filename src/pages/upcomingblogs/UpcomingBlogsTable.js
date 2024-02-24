@@ -38,7 +38,7 @@ const UpcomingBlogsTable = ({ blogs, setBlogs }) => {
       <thead>
         <tr>
           <th>Title</th>
-          <th className="d-none d-sm-table-cell">Category</th> {/* Hide on extra small screens */}
+          <th className="d-none d-sm-table-cell">Category</th>
           <th>Release Date</th>
           <th>Action</th>
         </tr>
@@ -47,31 +47,29 @@ const UpcomingBlogsTable = ({ blogs, setBlogs }) => {
         {filteredBlogs.map((blog) => (
           <tr key={blog.id}>
             <td>{blog.title}</td>
-            <td className="d-none d-sm-table-cell">{blog.category}</td> {/* Hide on extra small screens */}
+            <td className="d-none d-sm-table-cell">{blog.category}</td>
             <td>{moment(blog.release_date).format("MMM DD, YYYY")}</td>
-            <td>
-              {currentUser?.username === blog.owner && (
-                <div>
-                  <Link to={`/upcoming-blogs/${blog.id}/edit`}>
-                    <Button
-                      className={classNames(buttonStyles.Button, buttonStyles.Blue)}
-                      variant="primary"
-                      size="sm"
-                    >
-                      Edit
-                    </Button>
-                  </Link>
+            {currentUser?.username === blog.owner && (
+              <td>
+                <Link to={`/upcoming-blogs/${blog.id}/edit`}>
                   <Button
-                    className={classNames(buttonStyles.Button, buttonStyles.Red)}
-                    variant="danger"
+                    className={classNames(buttonStyles.Button, buttonStyles.Blue)}
+                    variant="primary"
                     size="sm"
-                    onClick={() => handleDelete(blog.id)}
                   >
-                    Delete
+                    Edit
                   </Button>
-                </div>
-              )}
-            </td>
+                </Link>
+                <Button
+                  className={classNames(buttonStyles.Button, buttonStyles.Red)}
+                  variant="danger"
+                  size="sm"
+                  onClick={() => handleDelete(blog.id)}
+                >
+                  Delete
+                </Button>
+              </td>
+            )}
           </tr>
         ))}
       </tbody>
