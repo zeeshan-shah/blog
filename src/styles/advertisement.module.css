@@ -1,0 +1,13 @@
+.advertisementContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+
+
+.advertisementImage {
+    height: 250px;
+    object-fit: cover;
+    object-fit: scale-down;
+}
