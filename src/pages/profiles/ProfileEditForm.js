@@ -21,6 +21,7 @@ const ProfileEditForm = () => {
   const { id } = useParams();
   const history = useHistory();
   const imageFile = useRef();
+  
 
   const [profileData, setProfileData] = useState({
     name: "",
@@ -42,7 +43,6 @@ const ProfileEditForm = () => {
           const { name, bio, image } = data;
           if (isMounted) { // Check if the component is still mounted before updating state
             setProfileData({ name, bio, image });
-            setSelectedImage(image); // Set the selected image
           }
         } catch (err) {
           //console.log(err);
@@ -75,8 +75,10 @@ const ProfileEditForm = () => {
     formData.append("name", name);
     formData.append("bio", bio);
 
-    if (selectedImage) {
+    if (!imageFile?.current?.files[0] && selectedImage) {
       formData.append("image", selectedImage);
+    } else if (imageFile?.current?.files[0]) {
+      formData.append("image", imageFile?.current?.files[0]);
     }
 
     try {
