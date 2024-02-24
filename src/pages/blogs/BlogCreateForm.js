@@ -34,13 +34,15 @@ function BlogCreateForm() {
   const [blogData, setBlogData] = useState({
     title: "",
     content: "",
-    category: "",
+    category: "science",
     image: "",
   });
   const { title, content, category, image } = blogData;
 
   const imageInput = useRef(null);
   const history = useHistory();
+  const [selectedImage, setSelectedImage] = useState(""); // State to store the selected image for saving
+
 
   const handleChange = (event) => {
     setBlogData({
@@ -51,7 +53,7 @@ function BlogCreateForm() {
 
   const handleChangeImage = (event) => {
     if (event.target.files.length) {
-      URL.revokeObjectURL(image);
+      setSelectedImage(event.target.files[0]);
       setBlogData({
         ...blogData,
         image: URL.createObjectURL(event.target.files[0]),
@@ -67,7 +69,11 @@ function BlogCreateForm() {
     formData.append("content", content);
     formData.append("category", category);
 
-    formData.append("image", imageInput.current.files[0]);
+    if (!imageInput?.current?.files[0] && selectedImage) {
+      formData.append("image", selectedImage);
+    } else if (imageInput?.current?.files[0]) {
+      formData.append("image", imageInput?.current?.files[0]);
+    }
 
     try {
       const { data } = await axiosReq.post(`/blogs/${category}/`, formData);
