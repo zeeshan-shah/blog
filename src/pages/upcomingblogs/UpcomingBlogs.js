@@ -21,7 +21,7 @@ const UpcomingBlogs = () => {
   }, []);
 
   return (
-    <div>
+    <div style={{ marginTop: '60px', textAlign: 'center' }}>
       <h2>Upcoming Blogs</h2>
       <UpcomingBlogsTable blogs={blogs}  setBlogs={setBlogs} /> {/* Pass currentUser to UpcomingBlogsTable */}
     </div>
