@@ -1,0 +1,109 @@
+.App {
+    font-family: Alice, sans-serif;
+    background-color: #f8f8f8;
+    min-height: 100vh;
+}
+
+.Main {
+    padding-top: 81px;
+}
+
+@media (min-width: 750px) {
+    .Main {
+        padding-top: 111px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .Main {
+        padding-top: 81px;
+    }
+}
+
+.container,
+.container-lg,
+.container-md,
+.container-sm {
+    max-width: 1200px;
+}
+
+@media (min-width: 1200px) {
+    Container,
+    .container-lg {
+        max-width: 1500px; /* You can adjust this value as needed */
+    }
+}
+
+
+.Content {
+    background-color: #ffffff;
+    padding: 10px;
+    border-radius: 2px;
+    border: 1px solid #dadadf;
+}
+
+.FillerImage {
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+}
+
+.Image {
+    max-height: 40vh;
+    max-width: 100%;
+    object-fit: contain;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+a {
+    color: #555555;
+    transition: color ease-in-out 0.3s;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+a:hover i {
+    color: #F9DB6D;
+    transition: color ease-in-out 0.3s;
+}
+
+input[type="file"] {
+    display: none;
+}
+
+i {
+    color: #cfced3;
+    font-size: 1.6rem;
+    padding: 7px;
+    vertical-align: middle;
+}
+
+i:hover {
+    cursor: pointer;
+    transition: color ease-in-out 0.3s;
+    color: #F9DB6D;
+}
+
+figure {
+    text-align: center;
+    display: inline-block;
+}
+
+/* scrollbar */
+*::-webkit-scrollbar {
+    width: 5px;
+}
+*::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+*::-webkit-scrollbar-thumb {
+    background: #888;
+}
+*::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
