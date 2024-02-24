@@ -38,11 +38,13 @@ function BlogEditForm() {
 
   const imageInput = useRef(null);
   const history = useHistory();
+  const [selectedImage, setSelectedImage] = useState(""); // State to store the selected image for saving
+
 
   useEffect(() => {
     const handleMount = async () => {
       try {
-        const { data } = await axiosReq.get(`/blogs/${cat}/${id}`);
+        const { data } = await axiosReq.get(`/blogs/${cat}/${id}/`);
         const { title, category, content, image, is_owner } = data;
 
         is_owner ? setBlogData({ title, category, content, image }) : history.push("/");
@@ -63,7 +65,7 @@ function BlogEditForm() {
 
   const handleChangeImage = (event) => {
     if (event.target.files.length) {
-      URL.revokeObjectURL(image);
+      setSelectedImage(event.target.files[0]);
       setBlogData({
         ...blogData,
         image: URL.createObjectURL(event.target.files[0]),
@@ -79,12 +81,14 @@ function BlogEditForm() {
     formData.append("content", content);
     formData.append("category", category);
 
-    if (imageInput?.current?.files[0]) {
-      formData.append("image", imageInput.current.files[0]);
+    if (!imageInput?.current?.files[0] && selectedImage) {
+      formData.append("image", selectedImage);
+    } else if (imageInput?.current?.files[0]) {
+      formData.append("image", imageInput?.current?.files[0]);
     }
 
     try {
-      await axiosReq.put(`/blogs/${category}/${id}`, formData);
+      await axiosReq.put(`/blogs/${category}/${id}/`, formData);
       history.push(`/blogs/${category}/${id}`);
     } catch (err) {
       //console.log(err);
