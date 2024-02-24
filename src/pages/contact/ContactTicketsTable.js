@@ -11,7 +11,6 @@ import { axiosReq } from "../../api/axiosDefaults";
 import styles from "../../styles/Contact.module.css";
 import Asset from "../../components/Asset";
 
-
 const ContactTicketsTable = ({ tickets, setTickets }) => {
     const currentUser = useCurrentUser();
     const history = useHistory();
@@ -64,56 +63,58 @@ const ContactTicketsTable = ({ tickets, setTickets }) => {
     }
 
     return (
-        <Table striped bordered hover>
-            <thead>
-                <tr>
-                    <th>Category</th>
-                    <th>Subject</th>
-                    <th>Message</th>
-                    <th>Status</th>
-                    <th>Admin Response</th>
-                    <th>Action</th>
-                </tr>
-            </thead>
-            <tbody>
-                {tickets.map((ticket) => (
-                    <tr key={ticket.id}>
-                        <td>{categoryMapping[ticket.category]}</td>
-                        <td>{ticket.subject}</td>
-                        <td>{ticket.message}</td>
-                        <td>{ticket.ticket_status}</td>
-                        <td>{ticket.admin_response}</td>
-                        <td>
-                            {currentUser?.username === ticket.owner ? (
-                                <>
-                                    <Link to={`/tickets/${ticket.id}/edit`}>
+        <div className="table-responsive">
+            <Table striped bordered hover>
+                <thead>
+                    <tr>
+                        <th className="d-none d-md-table-cell">Category</th>
+                        <th>Subject</th>
+                        <th>Message</th>
+                        <th className="d-none d-md-table-cell">Status</th>
+                        <th>Admin Response</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {tickets.map((ticket) => (
+                        <tr key={ticket.id}>
+                            <td className="d-none d-md-table-cell">{categoryMapping[ticket.category]}</td>
+                            <td>{ticket.subject}</td>
+                            <td>{ticket.message}</td>
+                            <td className="d-none d-md-table-cell">{ticket.ticket_status}</td>
+                            <td>{ticket.admin_response}</td>
+                            <td>
+                                {currentUser?.username === ticket.owner ? (
+                                    <>
+                                        <Link to={`/tickets/${ticket.id}/edit`}>
+                                            <Button
+                                                className={classNames(
+                                                    buttonStyles.Button,
+                                                    buttonStyles.Blue
+                                                )}
+                                                variant="primary"
+                                            >
+                                                Edit
+                                            </Button>
+                                        </Link>
                                         <Button
                                             className={classNames(
                                                 buttonStyles.Button,
-                                                buttonStyles.Blue
+                                                buttonStyles.Red
                                             )}
-                                            variant="primary"
+                                            variant="danger"
+                                            onClick={() => handleDelete(ticket.id)}
                                         >
-                                            Edit
+                                            Delete
                                         </Button>
-                                    </Link>
-                                    <Button
-                                        className={classNames(
-                                            buttonStyles.Button,
-                                            buttonStyles.Red
-                                        )}
-                                        variant="danger"
-                                        onClick={() => handleDelete(ticket.id)}
-                                    >
-                                        Delete
-                                    </Button>
-                                </>
-                            ) : null}
-                        </td>
-                    </tr>
-                ))}
-            </tbody>
-        </Table>
+                                    </>
+                                ) : null}
+                            </td>
+                        </tr>
+                    ))}
+                </tbody>
+            </Table>
+        </div>
     );
 };
 
