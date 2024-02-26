@@ -1,23 +1,36 @@
-import React, { useState } from "react";
-import { Media } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import React, { useState } from 'react';
+import { Media } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
-import Avatar from "../../components/Avatar";
-import styles from "../../styles/Comment.module.css";
-import { MoreDropdown } from "../../components/MoreDropdown";
-import { useCurrentUser } from "../../contexts/CurrentUserContext";
-import { axiosRes } from "../../api/axiosDefaults";
-import CommentEditForm from "./CommentEditForm";
-
+import Avatar from '../../components/Avatar';
+import styles from '../../styles/Comment.module.css';
+import { MoreDropdown } from '../../components/MoreDropdown';
+import { useCurrentUser } from '../../contexts/CurrentUserContext';
+import { axiosRes } from '../../api/axiosDefaults';
+import CommentEditForm from './CommentEditForm';
 
 const Comment = (props) => {
-  const { profile_id, profile_image, owner, updated_at, content, id, setBlog, setComments } = props;
+  const {
+    profile_id,
+    profile_image,
+    owner,
+    updated_at,
+    content,
+    id,
+    setBlog,
+    setComments,
+  } = props;
   const [showEditForm, setShowEditForm] = useState(false);
 
   const currentUser = useCurrentUser();
   const is_owner = currentUser?.username === owner;
 
   const handleDelete = async () => {
+    const confirmed = window.confirm(
+      'Are you sure you want to delete this comment?',
+    );
+    if (!confirmed) return;
+
     try {
       await axiosRes.delete(`/comments/${id}/`);
       setBlog((prevBlog) => ({
@@ -48,12 +61,12 @@ const Comment = (props) => {
           <span className={styles.Date}>{updated_at}</span>
           {showEditForm ? (
             <CommentEditForm
-                id={id}
-                profile_id={profile_id}
-                content={content}
-                profileImage={profile_image}
-                setComments={setComments}
-                setShowEditForm={setShowEditForm}
+              id={id}
+              profile_id={profile_id}
+              content={content}
+              profileImage={profile_image}
+              setComments={setComments}
+              setShowEditForm={setShowEditForm}
             />
           ) : (
             <p>{content}</p>
