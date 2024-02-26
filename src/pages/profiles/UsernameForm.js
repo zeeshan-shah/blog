@@ -1,25 +1,24 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from 'react';
 
-import Alert from "react-bootstrap/Alert";
-import Button from "react-bootstrap/Button";
-import Col from "react-bootstrap/Col";
-import Container from "react-bootstrap/Container";
-import Form from "react-bootstrap/Form";
-import Row from "react-bootstrap/Row";
+import Alert from 'react-bootstrap/Alert';
+import Button from 'react-bootstrap/Button';
+import Col from 'react-bootstrap/Col';
+import Container from 'react-bootstrap/Container';
+import Form from 'react-bootstrap/Form';
+import Row from 'react-bootstrap/Row';
 
-import { useHistory, useParams } from "react-router-dom";
-import { axiosRes } from "../../api/axiosDefaults";
+import { useHistory, useParams } from 'react-router-dom';
+import { axiosRes } from '../../api/axiosDefaults';
 import {
   useCurrentUser,
   useSetCurrentUser,
-} from "../../contexts/CurrentUserContext";
+} from '../../contexts/CurrentUserContext';
 
-import btnStyles from "../../styles/Button.module.css";
-import appStyles from "../../App.module.css";
-
+import btnStyles from '../../styles/Button.module.css';
+import appStyles from '../../App.module.css';
 
 const UsernameForm = () => {
-  const [username, setUsername] = useState("");
+  const [username, setUsername] = useState('');
   const [errors, setErrors] = useState({});
 
   const history = useHistory();
@@ -32,14 +31,14 @@ const UsernameForm = () => {
     if (currentUser?.profile_id?.toString() === id) {
       setUsername(currentUser.username);
     } else {
-      history.push("/");
+      history.push('/');
     }
   }, [currentUser, history, id]);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      await axiosRes.put("/dj-rest-auth/user/", {
+      await axiosRes.put('/dj-rest-auth/user/', {
         username,
       });
       setCurrentUser((prevUser) => ({
