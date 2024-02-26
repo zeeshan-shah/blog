@@ -1,19 +1,19 @@
-import React, { useState, useEffect, useRef } from "react";
-import { useHistory, useParams } from "react-router-dom";
-import Form from "react-bootstrap/Form";
-import Button from "react-bootstrap/Button";
-import Image from "react-bootstrap/Image";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
-import Container from "react-bootstrap/Container";
-import Alert from "react-bootstrap/Alert";
-import { axiosReq } from "../../api/axiosDefaults";
+import React, { useState, useEffect, useRef } from 'react';
+import { useHistory, useParams } from 'react-router-dom';
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
+import Image from 'react-bootstrap/Image';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import Container from 'react-bootstrap/Container';
+import Alert from 'react-bootstrap/Alert';
+import { axiosReq } from '../../api/axiosDefaults';
 import {
   useCurrentUser,
   useSetCurrentUser,
-} from "../../contexts/CurrentUserContext";
-import btnStyles from "../../styles/Button.module.css";
-import appStyles from "../../App.module.css";
+} from '../../contexts/CurrentUserContext';
+import btnStyles from '../../styles/Button.module.css';
+import appStyles from '../../App.module.css';
 
 const ProfileEditForm = () => {
   const currentUser = useCurrentUser();
@@ -21,46 +21,45 @@ const ProfileEditForm = () => {
   const { id } = useParams();
   const history = useHistory();
   const imageFile = useRef();
-  
 
   const [profileData, setProfileData] = useState({
-    name: "",
-    bio: "",
-    image: "",
+    name: '',
+    bio: '',
+    image: '',
   });
   const { name, bio, image } = profileData;
 
-  const [selectedImage, setSelectedImage] = useState(""); // State to store the selected image for saving
+  const [selectedImage, setSelectedImage] = useState(''); // State to store the selected image for saving
   const [errors, setErrors] = useState({});
 
   useEffect(() => {
     let isMounted = true; // Flag to track if the component is mounted
-  
+
     const handleMount = async () => {
       if (currentUser?.profile_id?.toString() === id) {
         try {
           const { data } = await axiosReq.get(`/profiles/${id}/`);
           const { name, bio, image } = data;
-          if (isMounted) { // Check if the component is still mounted before updating state
+          if (isMounted) {
+            // Check if the component is still mounted before updating state
             setProfileData({ name, bio, image });
           }
         } catch (err) {
           //console.log(err);
-          history.push("/");
+          history.push('/');
         }
       } else {
-        history.push("/");
+        history.push('/');
       }
     };
-  
+
     handleMount();
-  
+
     return () => {
       // Cleanup function to run when the component is unmounted
       isMounted = false; // Update the flag to indicate that the component is unmounted
     };
   }, [currentUser, history, id]);
-  
 
   const handleChange = (event) => {
     setProfileData({
@@ -72,13 +71,13 @@ const ProfileEditForm = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     const formData = new FormData();
-    formData.append("name", name);
-    formData.append("bio", bio);
+    formData.append('name', name);
+    formData.append('bio', bio);
 
     if (!imageFile?.current?.files[0] && selectedImage) {
-      formData.append("image", selectedImage);
+      formData.append('image', selectedImage);
     } else if (imageFile?.current?.files[0]) {
-      formData.append("image", imageFile?.current?.files[0]);
+      formData.append('image', imageFile?.current?.files[0]);
     }
 
     try {
@@ -158,7 +157,10 @@ const ProfileEditForm = () => {
             >
               cancel
             </Button>
-            <Button className={`${btnStyles.Button} ${btnStyles.Blue}`} type="submit">
+            <Button
+              className={`${btnStyles.Button} ${btnStyles.Blue}`}
+              type="submit"
+            >
               save
             </Button>
           </Container>
