@@ -1,31 +1,30 @@
 .Blog {
-    background-color: #ffffff;
-    border: 1px solid #dadadf;
-    border-radius: 2px;
-    margin-bottom: 16px;
-    text-align: center;
+  background-color: #ffffff;
+  border: 1px solid #dadadf;
+  border-radius: 2px;
+  margin-bottom: 16px;
+  text-align: center;
 }
 
 .CardTitle {
-    text-align: center;
-    color: #DD7373;
-    font-weight: 800;
+  text-align: center;
+  color: #dd7373;
+  font-weight: 800;
 }
 
 .Blog figure,
 h5 {
-    margin: 0 0;
+  margin: 0 0;
 }
 
 .Heart {
-    color: #F9DB6D;
+  color: #f9db6d;
 }
 
 .Heart:hover {
-    color: #397367;
+  color: #397367;
 }
 
 .HeartOutline:hover {
-    color: #F9DB6D;
+  color: #f9db6d;
 }
-
