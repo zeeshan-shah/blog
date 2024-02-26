@@ -1,17 +1,17 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
-import Form from "react-bootstrap/Form";
-import InputGroup from "react-bootstrap/InputGroup";
+import Form from 'react-bootstrap/Form';
+import InputGroup from 'react-bootstrap/InputGroup';
 
-import styles from "../../styles/CommentCreateEditForm.module.css";
-import Avatar from "../../components/Avatar";
-import { axiosRes } from "../../api/axiosDefaults";
-
+import styles from '../../styles/CommentCreateEditForm.module.css';
+import btnStyles from '../../styles/Button.module.css';
+import Avatar from '../../components/Avatar';
+import { axiosRes } from '../../api/axiosDefaults';
 
 function CommentCreateForm(props) {
   const { blog, setBlog, setComments, profileImage, profile_id } = props;
-  const [content, setContent] = useState("");
+  const [content, setContent] = useState('');
 
   const handleChange = (event) => {
     setContent(event.target.value);
@@ -20,7 +20,7 @@ function CommentCreateForm(props) {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const { data } = await axiosRes.post("/comments/", {
+      const { data } = await axiosRes.post('/comments/', {
         content,
         blog,
       });
@@ -36,7 +36,7 @@ function CommentCreateForm(props) {
           },
         ],
       }));
-      setContent("");
+      setContent('');
     } catch (err) {
       //console.log(err);
     }
@@ -60,7 +60,7 @@ function CommentCreateForm(props) {
         </InputGroup>
       </Form.Group>
       <button
-        className={`${styles.Button} btn d-block ml-auto`}
+        className={`${btnStyles.Button} ${btnStyles.Yellow} d-block ml-auto`}
         disabled={!content.trim()}
         type="submit"
       >
