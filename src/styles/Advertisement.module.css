@@ -1,13 +1,11 @@
 .advertisementContainer {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
 }
 
-
-
 .advertisementImage {
-    height: 250px;
-    object-fit: cover;
-    object-fit: scale-down;
+  height: 250px;
+  object-fit: cover;
+  object-fit: scale-down;
 }
