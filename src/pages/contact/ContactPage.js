@@ -1,14 +1,13 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 
-import ContactForm from "./ContactForm";
-import ContactTicketsPage from "./ContactTicketsPage";
-import styles from "../../styles/Contact.module.css";
-import { useRedirect } from "../../hooks/useRedirect";
+import ContactForm from './ContactForm';
+import ContactTicketsPage from './ContactTicketsPage';
+import { useRedirect } from '../../hooks/useRedirect';
 
-
+import styles from '../../styles/Contact.module.css';
 
 const ContactPage = () => {
-  useRedirect("loggedOut");
+  useRedirect('loggedOut');
 
   const [rerenderTickets, setRerenderTickets] = useState(false);
 
