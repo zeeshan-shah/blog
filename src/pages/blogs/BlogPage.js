@@ -1,21 +1,20 @@
-import React, { useEffect, useState } from "react";
-import { useHistory, useParams } from "react-router";
+import React, { useEffect, useState } from 'react';
+import { useHistory, useParams } from 'react-router';
 
-import Col from "react-bootstrap/Col";
-import Row from "react-bootstrap/Row";
-import Container from "react-bootstrap/Container";
+import Col from 'react-bootstrap/Col';
+import Row from 'react-bootstrap/Row';
+import Container from 'react-bootstrap/Container';
 
-import appStyles from "../../App.module.css";
-import { axiosReq } from "../../api/axiosDefaults";
-import Blog from "./Blog";
-import Comment from "../comments/Comment";
-import CommentCreateForm from "../comments/CommentCreateForm";
-import { useCurrentUser } from "../../contexts/CurrentUserContext";
-import InfiniteScroll from "react-infinite-scroll-component";
-import Asset from "../../components/Asset";
-import { fetchMoreData } from "../../utils/utils";
-import PopularProfiles from "../profiles/PopularProfiles";
-
+import appStyles from '../../App.module.css';
+import { axiosReq } from '../../api/axiosDefaults';
+import Blog from './Blog';
+import Comment from '../comments/Comment';
+import CommentCreateForm from '../comments/CommentCreateForm';
+import { useCurrentUser } from '../../contexts/CurrentUserContext';
+import InfiniteScroll from 'react-infinite-scroll-component';
+import Asset from '../../components/Asset';
+import { fetchMoreData } from '../../utils/utils';
+import PopularProfiles from '../profiles/PopularProfiles';
 
 function BlogPage() {
   const { category, id } = useParams();
@@ -27,6 +26,8 @@ function BlogPage() {
   const [comments, setComments] = useState({ results: [] });
 
   useEffect(() => {
+    let isMounted = true; // Flag to track whether the component is mounted
+
     const handleMount = async () => {
       try {
         const [{ data: blog }, { data: comments }] = await Promise.all([
@@ -34,16 +35,24 @@ function BlogPage() {
           axiosReq.get(`/comments/?blog=${id}`),
         ]);
 
-        setBlog({ results: [blog] });
-        setComments(comments);
+        // Check if the component is still mounted before updating state
+        if (isMounted) {
+          setBlog({ results: [blog] });
+          setComments(comments);
+        }
       } catch (err) {
         console.error(err);
         // Redirect to the home page if an error occurs (blog not found)
-        history.push("/");
+        history.push('/');
       }
     };
 
     handleMount();
+
+    // Cleanup function to run when the component is unmounted
+    return () => {
+      isMounted = false; // Update the mounted flag to false when unmounting
+    };
   }, [category, id, history]);
 
   return (
@@ -61,7 +70,7 @@ function BlogPage() {
               setComments={setComments}
             />
           ) : comments.results.length ? (
-            "Comments"
+            'Comments'
           ) : null}
           {comments.results.length ? (
             <InfiniteScroll
