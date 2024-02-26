@@ -1,11 +1,12 @@
-import React from "react";
+import React from 'react';
 
-import { Container } from "react-bootstrap";
-import appStyles from "../../App.module.css";
-import Asset from "../../components/Asset";
-import { useProfileData } from "../../contexts/ProfileDataContext";
-import Profile from "./Profile";
+import { Container } from 'react-bootstrap';
+import appStyles from '../../App.module.css';
+import Asset from '../../components/Asset';
+import { useProfileData } from '../../contexts/ProfileDataContext';
+import Profile from './Profile';
 
+import styles from '../../styles/PopularProfiles.module.css'; // Import custom CSS module
 
 const PopularProfiles = ({ mobile }) => {
   const { popularProfiles } = useProfileData();
@@ -13,12 +14,12 @@ const PopularProfiles = ({ mobile }) => {
   return (
     <Container
       className={`${appStyles.Content} ${
-        mobile && "d-lg-none text-center mb-3"
+        mobile && 'd-lg-none text-center mb-3'
       }`}
     >
       {popularProfiles.results.length ? (
         <>
-          <p>Most followed profiles.</p>
+          <p className={styles.heading}>Most followed profiles</p>
           {mobile ? (
             <div className="d-flex justify-content-around">
               {popularProfiles.results.slice(0, 4).map((profile) => (
