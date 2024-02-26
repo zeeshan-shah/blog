@@ -1,9 +1,9 @@
-import React, { useState } from "react";
-import { Link, useHistory } from "react-router-dom";
+import React, { useState } from 'react';
+import { Link, useHistory } from 'react-router-dom';
 
-import styles from "../../styles/SignInUpForm.module.css";
-import btnStyles from "../../styles/Button.module.css";
-import appStyles from "../../App.module.css";
+import styles from '../../styles/SignInUpForm.module.css';
+import btnStyles from '../../styles/Button.module.css';
+import appStyles from '../../App.module.css';
 
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
@@ -13,16 +13,15 @@ import Row from 'react-bootstrap/Row';
 import Container from 'react-bootstrap/Container';
 import Alert from 'react-bootstrap/Alert';
 
-import axios from "axios";
-import { useRedirect } from "../../hooks/useRedirect";
-
+import axios from 'axios';
+import { useRedirect } from '../../hooks/useRedirect';
 
 const SignUpForm = () => {
-  useRedirect("loggedIn");
+  useRedirect('loggedIn');
   const [signUpData, setSignUpData] = useState({
-    username: "",
-    password1: "",
-    password2: "",
+    username: '',
+    password1: '',
+    password2: '',
   });
   const { username, password1, password2 } = signUpData;
 
@@ -40,8 +39,8 @@ const SignUpForm = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      await axios.post("/dj-rest-auth/registration/", signUpData);
-      history.push("/signin");
+      await axios.post('/dj-rest-auth/registration/', signUpData);
+      history.push('/signin');
     } catch (err) {
       setErrors(err.response?.data);
     }
@@ -131,9 +130,10 @@ const SignUpForm = () => {
       >
         <Image
           className={`${appStyles.FillerImage}`}
-          src={"https://res.cloudinary.com/db2fhoogx/image/upload/signup_oya9dg.jpg"}
+          src={
+            'https://res.cloudinary.com/db2fhoogx/image/upload/signup_oya9dg.jpg'
+          }
           alt="Sign Up Page Iamge"
-
         />
       </Col>
     </Row>
