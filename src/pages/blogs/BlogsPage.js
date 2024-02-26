@@ -1,25 +1,24 @@
-import React, { useEffect, useState } from "react";
-import { useHistory, useParams } from "react-router";
+import React, { useEffect, useState } from 'react';
+import { useHistory, useParams } from 'react-router';
 
-import Form from "react-bootstrap/Form";
-import Col from "react-bootstrap/Col";
-import Row from "react-bootstrap/Row";
-import Container from "react-bootstrap/Container";
+import Form from 'react-bootstrap/Form';
+import Col from 'react-bootstrap/Col';
+import Row from 'react-bootstrap/Row';
+import Container from 'react-bootstrap/Container';
 
-import Blog from "./Blog";
-import Asset from "../../components/Asset";
-import appStyles from "../../App.module.css";
-import styles from "../../styles/BlogsPage.module.css";
-import { useLocation } from "react-router";
-import { axiosReq } from "../../api/axiosDefaults";
-import NoResults from "../../assets/no-results.png";
-import InfiniteScroll from "react-infinite-scroll-component";
-import { fetchMoreData } from "../../utils/utils";
-import PopularProfiles from "../profiles/PopularProfiles";
-import { useCurrentUser } from "../../contexts/CurrentUserContext";
+import Blog from './Blog';
+import Asset from '../../components/Asset';
+import appStyles from '../../App.module.css';
+import styles from '../../styles/BlogsPage.module.css';
+import { useLocation } from 'react-router';
+import { axiosReq } from '../../api/axiosDefaults';
+import NoResults from '../../assets/no-results.png';
+import InfiniteScroll from 'react-infinite-scroll-component';
+import { fetchMoreData } from '../../utils/utils';
+import PopularProfiles from '../profiles/PopularProfiles';
+import { useCurrentUser } from '../../contexts/CurrentUserContext';
 
-
-function BlogsPage({ message, filter = "" }) {
+function BlogsPage({ message, filter = '' }) {
   const [blogs, setBlogs] = useState({ results: [] });
   const [hasLoaded, setHasLoaded] = useState(false);
   const { pathname } = useLocation();
@@ -27,9 +26,11 @@ function BlogsPage({ message, filter = "" }) {
   const history = useHistory();
   const currentUser = useCurrentUser();
 
-  const [query, setQuery] = useState("");
+  const [query, setQuery] = useState('');
 
   useEffect(() => {
+    let isMounted = true; // Flag to track mounted state
+
     const fetchBlogs = async () => {
       try {
         let url;
@@ -38,28 +39,45 @@ function BlogsPage({ message, filter = "" }) {
           url = `/blogs/${category}/?${filter}search=${query}`;
         } else {
           // If category is not defined, fetch data from all categories with filter
-          const allCategories = ["science", "politics", "sports", "travel", "programming"];
+          const allCategories = [
+            'science',
+            'politics',
+            'sports',
+            'travel',
+            'programming',
+          ];
           const categoryData = await Promise.all(
             allCategories.map(async (cat) => {
-              const { data } = await axiosReq.get(`/blogs/${cat}/?${filter}search=${query}`);
+              const { data } = await axiosReq.get(
+                `/blogs/${cat}/?${filter}search=${query}`,
+              );
               return data.results;
-            })
+            }),
           );
 
           // Combine results from all categories
-          const combinedData = categoryData.reduce((acc, curr) => acc.concat(curr), []);
-          setBlogs({ results: combinedData });
-          setHasLoaded(true);
-          return; // exit early
+          const combinedData = categoryData.reduce(
+            (acc, curr) => acc.concat(curr),
+            [],
+          );
+          if (isMounted) {
+            // Check if component is still mounted before updating state
+            setBlogs({ results: combinedData });
+            setHasLoaded(true);
+          }
+          return; // Exit early
         }
 
         const { data } = await axiosReq.get(url);
-        setBlogs(data);
-        setHasLoaded(true);
+        if (isMounted) {
+          // Check if component is still mounted before updating state
+          setBlogs(data);
+          setHasLoaded(true);
+        }
       } catch (err) {
-        //console.log(err);
-        history.push("/");
-
+        // Handle errors
+        console.error(err);
+        history.push('/');
       }
     };
 
@@ -68,8 +86,10 @@ function BlogsPage({ message, filter = "" }) {
       fetchBlogs();
     }, 1000);
 
+    // Cleanup function to cancel the timer and update the mounted flag
     return () => {
       clearTimeout(timer);
+      isMounted = false; // Set the flag to indicate that the component is unmounted
     };
   }, [filter, query, pathname, category, history, currentUser]);
 
