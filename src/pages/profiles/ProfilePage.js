@@ -1,30 +1,29 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from 'react';
 
-import Col from "react-bootstrap/Col";
-import Row from "react-bootstrap/Row";
-import Container from "react-bootstrap/Container";
+import Col from 'react-bootstrap/Col';
+import Row from 'react-bootstrap/Row';
+import Container from 'react-bootstrap/Container';
 
-import Asset from "../../components/Asset";
+import Asset from '../../components/Asset';
 
-import styles from "../../styles/ProfilePage.module.css";
-import appStyles from "../../App.module.css";
-import btnStyles from "../../styles/Button.module.css";
+import styles from '../../styles/ProfilePage.module.css';
+import appStyles from '../../App.module.css';
+import btnStyles from '../../styles/Button.module.css';
 
-import PopularProfiles from "./PopularProfiles";
-import { useCurrentUser } from "../../contexts/CurrentUserContext";
-import { useParams } from "react-router";
-import { axiosReq } from "../../api/axiosDefaults";
+import PopularProfiles from './PopularProfiles';
+import { useCurrentUser } from '../../contexts/CurrentUserContext';
+import { useParams } from 'react-router';
+import { axiosReq } from '../../api/axiosDefaults';
 import {
   useProfileData,
   useSetProfileData,
-} from "../../contexts/ProfileDataContext";
-import { Button, Image } from "react-bootstrap";
-import InfiniteScroll from "react-infinite-scroll-component";
-import Blog from "../blogs/Blog";
-import { fetchMoreData } from "../../utils/utils";
-import NoResults from "../../assets/no-results.png";
-import { ProfileEditDropdown } from "../../components/MoreDropdown";
-
+} from '../../contexts/ProfileDataContext';
+import { Button, Image } from 'react-bootstrap';
+import InfiniteScroll from 'react-infinite-scroll-component';
+import Blog from '../blogs/Blog';
+import { fetchMoreData } from '../../utils/utils';
+import NoResults from '../../assets/no-results.png';
+import { ProfileEditDropdown } from '../../components/MoreDropdown';
 
 function ProfilePage() {
   const [hasLoaded, setHasLoaded] = useState(false);
@@ -42,6 +41,7 @@ function ProfilePage() {
   useEffect(() => {
     const fetchData = async () => {
       try {
+        setHasLoaded(false);
         const [{ data: pageProfile }] = await Promise.all([
           axiosReq.get(`/profiles/${id}/`),
         ]);
@@ -49,17 +49,25 @@ function ProfilePage() {
           ...prevState,
           pageProfile: { results: [pageProfile] },
         }));
-  
+
         // Fetch blogs from every category
-        const allCategories = ["science", "politics", "sports", "travel", "programming"];
+        const allCategories = [
+          'science',
+          'politics',
+          'sports',
+          'travel',
+          'programming',
+        ];
         const blogsPromises = allCategories.map(async (cat) => {
-          const { data } = await axiosReq.get(`/blogs/${cat}/?owner__profile=${id}`);
+          const { data } = await axiosReq.get(
+            `/blogs/${cat}/?owner__profile=${id}`,
+          );
           return data.results;
         });
-  
+
         // Combine results from all categories
         const combinedBlogs = (await Promise.all(blogsPromises)).flat();
-  
+
         setProfileBlogs({ results: combinedBlogs });
         setHasLoaded(true);
       } catch (err) {
@@ -68,7 +76,6 @@ function ProfilePage() {
     };
     fetchData();
   }, [id, setProfileData]);
- 
 
   const mainProfile = (
     <>
@@ -127,13 +134,13 @@ function ProfilePage() {
       <hr />
       <p className="text-center">{profile?.owner}'s blogs</p>
       <hr />
-      {profileBlogs.results.length ? (
+      {profileBlogs.results.length > 0 ? ( // Check if there are results in profileBlogs
         <InfiniteScroll
           children={profileBlogs.results.map((blog) => (
             <Blog key={blog.id} {...blog} setBlogs={setProfileBlogs} />
           ))}
           dataLength={profileBlogs.results.length}
-          loader={<Asset spinner />}
+          loader={<Asset spinner />} // Display spinner while loading
           hasMore={!!profileBlogs.next}
           next={() => fetchMoreData(profileBlogs, setProfileBlogs)}
         />
