@@ -1,17 +1,16 @@
-import React from "react";
-import { Link, useHistory } from "react-router-dom";
+import React from 'react';
+import { Link, useHistory } from 'react-router-dom';
 
 import Card from 'react-bootstrap/Card';
 import Media from 'react-bootstrap/Media';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Tooltip from 'react-bootstrap/Tooltip';
 
-import styles from "../../styles/Blog.module.css";
-import { useCurrentUser } from "../../contexts/CurrentUserContext";
-import Avatar from "../../components/Avatar";
-import { axiosRes } from "../../api/axiosDefaults";
-import { MoreDropdown } from "../../components/MoreDropdown";
-
+import styles from '../../styles/Blog.module.css';
+import { useCurrentUser } from '../../contexts/CurrentUserContext';
+import Avatar from '../../components/Avatar';
+import { axiosRes } from '../../api/axiosDefaults';
+import { MoreDropdown } from '../../components/MoreDropdown';
 
 const Blog = (props) => {
   const {
@@ -40,6 +39,11 @@ const Blog = (props) => {
   };
 
   const handleDelete = async () => {
+    const confirmed = window.confirm(
+      'Are you sure you want to delete this blog?',
+    );
+    if (!confirmed) return;
+
     try {
       await axiosRes.delete(`/blogs/${category}/${id}/`);
       history.goBack();
@@ -50,7 +54,7 @@ const Blog = (props) => {
 
   const handleLike = async () => {
     try {
-      const { data } = await axiosRes.post("/likes/", { blog: id });
+      const { data } = await axiosRes.post('/likes/', { blog: id });
       setBlogs((prevBlogs) => ({
         ...prevBlogs,
         results: prevBlogs.results.map((blog) => {
@@ -90,11 +94,12 @@ const Blog = (props) => {
           </Link>
           <div className="d-flex align-items-center">
             <span>{updated_at}</span>
-            {is_owner && blogPage && 
-              <MoreDropdown 
+            {is_owner && blogPage && (
+              <MoreDropdown
                 handleEdit={handleEdit}
                 handleDelete={handleDelete}
-              />}
+              />
+            )}
           </div>
         </Media>
       </Card.Body>
@@ -104,9 +109,12 @@ const Blog = (props) => {
       <Card.Body>
         {title && <Card.Title className={styles.CardTitle}>{title}</Card.Title>}
         {/* Render paragraphs of content */}
-        {content && content.split('\n').map((paragraph, index) => (
-          <Card.Text key={index}>{paragraph}</Card.Text>
-        ))}
+        {content &&
+          content
+            .split('\n')
+            .map((paragraph, index) => (
+              <Card.Text key={index}>{paragraph}</Card.Text>
+            ))}
         <div className={styles.BlogBar}>
           {is_owner ? (
             <OverlayTrigger
