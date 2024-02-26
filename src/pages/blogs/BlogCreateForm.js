@@ -1,23 +1,22 @@
-import React, { useRef, useState } from "react";
-import { useHistory } from "react-router";
-import { axiosReq } from "../../api/axiosDefaults";
-import { useRedirect } from "../../hooks/useRedirect";
+import React, { useRef, useState } from 'react';
+import { useHistory } from 'react-router';
+import { axiosReq } from '../../api/axiosDefaults';
+import { useRedirect } from '../../hooks/useRedirect';
 
-import Form from "react-bootstrap/Form";
-import Button from "react-bootstrap/Button";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
-import Container from "react-bootstrap/Container";
-import Alert from "react-bootstrap/Alert";
-import Image from "react-bootstrap/Image";
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import Container from 'react-bootstrap/Container';
+import Alert from 'react-bootstrap/Alert';
+import Image from 'react-bootstrap/Image';
 
-import Asset from "../../components/Asset";
-import Upload from "../../assets/upload.png";
+import Asset from '../../components/Asset';
+import Upload from '../../assets/upload.png';
 
-import styles from "../../styles/BlogCreateEditForm.module.css";
-import appStyles from "../../App.module.css";
-import btnStyles from "../../styles/Button.module.css";
-
+import styles from '../../styles/BlogCreateEditForm.module.css';
+import appStyles from '../../App.module.css';
+import btnStyles from '../../styles/Button.module.css';
 
 const CATEGORY_CHOICES = [
   ['science', 'Science and Technology'],
@@ -28,21 +27,20 @@ const CATEGORY_CHOICES = [
 ];
 
 function BlogCreateForm() {
-  useRedirect("loggedOut");
+  useRedirect('loggedOut');
   const [errors, setErrors] = useState({});
 
   const [blogData, setBlogData] = useState({
-    title: "",
-    content: "",
-    category: "science",
-    image: "",
+    title: '',
+    content: '',
+    category: 'science',
+    image: '',
   });
   const { title, content, category, image } = blogData;
 
   const imageInput = useRef(null);
   const history = useHistory();
-  const [selectedImage, setSelectedImage] = useState(""); // State to store the selected image for saving
-
+  const [selectedImage, setSelectedImage] = useState(''); // State to store the selected image for saving
 
   const handleChange = (event) => {
     setBlogData({
@@ -65,14 +63,22 @@ function BlogCreateForm() {
     event.preventDefault();
     const formData = new FormData();
 
-    formData.append("title", title);
-    formData.append("content", content);
-    formData.append("category", category);
+    if (!title) {
+      setErrors((prevErrors) => ({
+        ...prevErrors,
+        title: ['Title is required.'],
+      }));
+      return; // Prevent API request if title field is empty
+    }
+
+    formData.append('title', title);
+    formData.append('content', content);
+    formData.append('category', category);
 
     if (!imageInput?.current?.files[0] && selectedImage) {
-      formData.append("image", selectedImage);
+      formData.append('image', selectedImage);
     } else if (imageInput?.current?.files[0]) {
-      formData.append("image", imageInput?.current?.files[0]);
+      formData.append('image', imageInput?.current?.files[0]);
     }
 
     try {
@@ -111,9 +117,13 @@ function BlogCreateForm() {
           value={category}
           onChange={handleChange}
         >
-          <option value="" disabled>Select a category</option>
+          <option value="" disabled>
+            Select a category
+          </option>
           {CATEGORY_CHOICES.map(([value, label]) => (
-            <option key={value} value={value}>{label}</option>
+            <option key={value} value={value}>
+              {label}
+            </option>
           ))}
         </Form.Control>
       </Form.Group>
@@ -145,7 +155,10 @@ function BlogCreateForm() {
       >
         cancel
       </Button>
-      <Button className={`${btnStyles.Button} ${btnStyles.Blue}`} type="submit">
+      <Button
+        className={`${btnStyles.Button} ${btnStyles.Yellow}`}
+        type="submit"
+      >
         create
       </Button>
     </div>
