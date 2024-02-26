@@ -1,18 +1,18 @@
-import React from "react";
-import Navbar from "react-bootstrap/Navbar";
-import Container from "react-bootstrap/Container";
-import Nav from "react-bootstrap/Nav";
-import logo from "../assets/logo.png";
-import styles from "../styles/NavBar.module.css";
-import { NavLink } from "react-router-dom";
+import React from 'react';
+import Navbar from 'react-bootstrap/Navbar';
+import Container from 'react-bootstrap/Container';
+import Nav from 'react-bootstrap/Nav';
+import logo from '../assets/logo.png';
+import styles from '../styles/NavBar.module.css';
+import { NavLink } from 'react-router-dom';
 import {
   useCurrentUser,
   useSetCurrentUser,
-} from "../contexts/CurrentUserContext";
-import Avatar from "./Avatar";
-import axios from "axios";
-import useClickOutsideToggle from "../hooks/useClickOutsideToggle";
-import { removeTokenTimestamp } from "../utils/utils";
+} from '../contexts/CurrentUserContext';
+import Avatar from './Avatar';
+import axios from 'axios';
+import useClickOutsideToggle from '../hooks/useClickOutsideToggle';
+import { removeTokenTimestamp } from '../utils/utils';
 
 const NavBar = () => {
   const currentUser = useCurrentUser();
@@ -22,7 +22,7 @@ const NavBar = () => {
 
   const handleSignOut = async () => {
     try {
-      await axios.post("dj-rest-auth/logout/");
+      await axios.post('dj-rest-auth/logout/');
       setCurrentUser(null);
       removeTokenTimestamp();
     } catch (err) {
@@ -41,35 +41,37 @@ const NavBar = () => {
   );
   const loggedInIcons = (
     <>
-
-        <NavLink
-            className={styles.NavLink}
-            activeClassName={styles.Active}
-            to="/bookmarked"
-        >
-            <i className="fa-regular fa-bookmark"></i>Bookmarked
-        </NavLink>
-        <NavLink
-            to="/tickets"
-            className={styles.NavLink}
-            activeClassName={styles.Active}
-        >
-            <i className="fa-regular fa-envelope"></i>Contact
-        </NavLink>
-        <NavLink className={styles.NavLink} to="/" onClick={handleSignOut}>
-            <i className="fas fa-sign-out-alt"></i>Sign out
-        </NavLink>
-        <NavLink
-            className={styles.NavLink}
-            to={`/profiles/${currentUser?.profile_id}`}
-        >
-            <Avatar src={currentUser?.profile_image} text={`${currentUser?.username}`} height={40} />
-        </NavLink>
+      <NavLink
+        className={styles.NavLink}
+        activeClassName={styles.Active}
+        to="/bookmarked"
+      >
+        <i className="fa-regular fa-bookmark"></i>Bookmarked
+      </NavLink>
+      <NavLink
+        to="/tickets"
+        className={styles.NavLink}
+        activeClassName={styles.Active}
+      >
+        <i className="fa-regular fa-envelope"></i>Contact
+      </NavLink>
+      <NavLink className={styles.NavLink} to="/" onClick={handleSignOut}>
+        <i className="fas fa-sign-out-alt"></i>Sign out
+      </NavLink>
+      <NavLink
+        className={styles.NavLink}
+        to={`/profiles/${currentUser?.profile_id}`}
+      >
+        <Avatar
+          src={currentUser?.profile_image}
+          text={`${currentUser?.username}`}
+          height={40}
+        />
+      </NavLink>
     </>
   );
   const loggedOutIcons = (
     <>
-
       <NavLink
         className={styles.NavLink}
         activeClassName={styles.Active}
@@ -91,7 +93,7 @@ const NavBar = () => {
     <Navbar
       expanded={expanded}
       className={styles.NavBar}
-      expand="lg"
+      expand="xl"
       fixed="top"
     >
       <Container>
@@ -117,14 +119,14 @@ const NavBar = () => {
               <i className="fas fa-home"></i>Home
             </NavLink>
             <NavLink
-                exact
-                className={styles.NavLink}
-                activeClassName={styles.Active}
-                to="/blogs/"
-                >
-                <i className="fa-solid fa-list"></i>Categories
+              exact
+              className={styles.NavLink}
+              activeClassName={styles.Active}
+              to="/blogs/"
+            >
+              <i className="fa-solid fa-list"></i>Categories
             </NavLink>
-            
+
             {currentUser ? loggedInIcons : loggedOutIcons}
           </Nav>
         </Navbar.Collapse>
