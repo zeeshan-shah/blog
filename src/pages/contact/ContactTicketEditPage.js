@@ -1,8 +1,7 @@
-import React from "react";
-import { useParams } from "react-router-dom";
+import React from 'react';
+import { useParams } from 'react-router-dom';
 
-import ContactEditForm from "./ContactEditForm";
-
+import ContactEditForm from './ContactEditForm';
 
 const ContactTicketEditPage = () => {
   const { id } = useParams();
