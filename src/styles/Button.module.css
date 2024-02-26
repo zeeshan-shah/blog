@@ -1,69 +1,82 @@
 .Button {
-    font-size: 0.8rem;
-    align-self: center;
-    border-radius: 100px;
-    border-color: transparent;
-    padding: 4px 10px;
-    min-width: 75px;
-    margin: 2px;
-
+  font-size: 0.8rem;
+  align-self: center;
+  border-radius: 100px;
+  border-color: transparent;
+  padding: 4px 10px;
+  min-width: 75px;
+  margin: 2px;
 }
 
 .Button:hover {
-    opacity: 0.8;
-    border-color: transparent;
-    cursor: pointer;
+  opacity: 0.8;
+  border-color: transparent;
+  cursor: pointer;
 }
 
 .Button:hover:active {
-    background-color: #397367 !important;
+  background-color: #397367 !important;
 }
 
 .Button:active {
-    background-color: #397367 !important;
+  background-color: #397367 !important;
 }
 
 .Button:focus {
-    background-color: #397367;
+  background-color: #397367;
 }
 
 .Wide {
-    padding: 10px 50px;
-    width: 100%;
+  padding: 10px 50px;
+  width: 100%;
 }
 
 .Blue,
 .BlueOutline:hover,
 .Bright:hover {
-    background-color: #397367;
-    color: #ffffff;
+  background-color: #397367;
+  color: #ffffff;
+}
+
+.Yellow,
+.YellowOutline:hover,
+.Bright:hover {
+  background-color: #f9db6d;
+  color: #3c1518;
+}
+
+.YellowOutline,
+.Yellow:hover {
+  /* border: 1px solid #397367; */
+  background-color: #397367;
+  color: #ffffff;
 }
 
 .BlueOutline,
 .Blue:hover {
-/* border: 1px solid #397367; */
-    background-color: #F9DB6D;
-    color: #3C1518;
+  /* border: 1px solid #397367; */
+  background-color: #f9db6d;
+  color: #3c1518;
 }
 
 .Black,
 .BlackOutline:hover {
-/* background-color: #242a3d;
+  /* background-color: #242a3d;
 color: white; */
-    background-color: #242a3d;
-    color: aliceblue;
+  background-color: #242a3d;
+  color: aliceblue;
 }
 
 .Black:hover,
 .BlackOutline {
-/* background-color: #dadadf;
+  /* background-color: #dadadf;
 color: #242a3d;
 border-color: #242a3d; */
-    background-color: aliceblue;
-    color: #242a3d;
+  background-color: aliceblue;
+  color: #242a3d;
 }
 
 .Bright {
-    background-color: #397367;
-    color: #F9DB6D;
+  background-color: #397367;
+  color: #f9db6d;
 }
