@@ -1,34 +1,34 @@
-import React, { useState, useEffect } from "react";
-import { useParams, useHistory } from "react-router-dom";
-import { axiosReq } from "../../api/axiosDefaults";
+import React, { useState, useEffect } from 'react';
+import { useParams, useHistory } from 'react-router-dom';
+import { axiosReq } from '../../api/axiosDefaults';
 
-import Form from "react-bootstrap/Form";
-import Button from "react-bootstrap/Button";
-import Row from "react-bootstrap/Row";
-import Container from "react-bootstrap/Container";
-import Alert from "react-bootstrap/Alert";
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
+import Row from 'react-bootstrap/Row';
+import Container from 'react-bootstrap/Container';
+import Alert from 'react-bootstrap/Alert';
 
-import appStyles from "../../App.module.css";
-import btnStyles from "../../styles/Button.module.css";
-import { useRedirect } from "../../hooks/useRedirect";
-
+import appStyles from '../../App.module.css';
+import btnStyles from '../../styles/Button.module.css';
+import { useRedirect } from '../../hooks/useRedirect';
 
 const CATEGORY_CHOICES = [
-  { value: "1", label: "Blog Inquiry" },
-  { value: "2", label: "Technical Support" },
-  { value: "3", label: "Business Partnership" },
-  { value: "4", label: "General Inquiry" },
+  { value: '1', label: 'Blog Inquiry' },
+  { value: '2', label: 'Technical Support' },
+  { value: '3', label: 'Business Partnership' },
+  { value: '4', label: 'General Inquiry' },
+  { value: '5', label: 'Advertise with Us' },
 ];
 
 function ContactEditForm() {
   const { id } = useParams();
-  useRedirect("loggedOut");
+  useRedirect('loggedOut');
 
   const [errors, setErrors] = useState({});
   const [contactData, setContactData] = useState({
-    category: "",
-    subject: "",
-    message: "",
+    category: '',
+    subject: '',
+    message: '',
   });
   const { category, subject, message } = contactData;
 
@@ -42,18 +42,23 @@ function ContactEditForm() {
 
         is_owner
           ? setContactData({ category, subject, message })
-          : history.push("/"); // Redirect if the user is not the owner
+          : history.push('/'); // Redirect if the user is not the owner
       } catch (error) {
         if (error.response && error.response.status === 404) {
           // Contact ticket not found, redirect to the home page
-          history.push("/");
+          history.push('/');
         } else {
-          console.error("Error fetching contact ticket", error);
+          console.error('Error fetching contact ticket', error);
         }
       }
     };
 
     fetchData();
+
+    // Cleanup function to reset errors when component unmounts
+    return () => {
+      setErrors({});
+    };
   }, [history, id]);
 
   const handleChange = (event) => {
@@ -65,19 +70,26 @@ function ContactEditForm() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const formData = new FormData();
+    setErrors({}); // Reset errors
 
-    formData.append("category", category);
-    formData.append("subject", subject);
-    formData.append("message", message);
+    // Validate form fields
+    if (!category || !subject || !message) {
+      setErrors({
+        category: !category ? ['Category is required.'] : [],
+        subject: !subject ? ['Subject is required.'] : [],
+        message: !message ? ['Message is required.'] : [],
+      });
+      return;
+    }
 
     try {
-      await axiosReq.put(`/tickets/${id}`, formData);
-      history.push("/tickets"); // Redirect to the contact tickets page after editing
+      await axiosReq.put(`/tickets/${id}`, contactData);
+      history.push('/tickets'); // Redirect to the contact tickets page after editing
     } catch (err) {
-      //console.log(err);
       if (err.response?.status !== 401) {
-        setErrors(err.response?.data);
+        setErrors(
+          err.response?.data || { general: 'Failed to update contact ticket' },
+        );
       }
     }
   };
@@ -92,17 +104,22 @@ function ContactEditForm() {
           value={category}
           onChange={handleChange}
         >
-          <option value="" disabled>Select a category</option>
+          <option value="" disabled>
+            Select a category
+          </option>
           {CATEGORY_CHOICES.map(({ value, label }) => (
-            <option key={value} value={value}>{label}</option>
+            <option key={value} value={value}>
+              {label}
+            </option>
           ))}
         </Form.Control>
+        {errors.category &&
+          errors.category.map((message, idx) => (
+            <Alert variant="warning" key={idx}>
+              {message}
+            </Alert>
+          ))}
       </Form.Group>
-      {errors?.category?.map((message, idx) => (
-        <Alert variant="warning" key={idx}>
-          {message}
-        </Alert>
-      ))}
 
       <Form.Group>
         <Form.Label>Subject</Form.Label>
@@ -112,12 +129,13 @@ function ContactEditForm() {
           value={subject}
           onChange={handleChange}
         />
+        {errors.subject &&
+          errors.subject.map((message, idx) => (
+            <Alert variant="warning" key={idx}>
+              {message}
+            </Alert>
+          ))}
       </Form.Group>
-      {errors?.subject?.map((message, idx) => (
-        <Alert variant="warning" key={idx}>
-          {message}
-        </Alert>
-      ))}
 
       <Form.Group>
         <Form.Label>Message</Form.Label>
@@ -127,12 +145,13 @@ function ContactEditForm() {
           value={message}
           onChange={handleChange}
         />
+        {errors.message &&
+          errors.message.map((message, idx) => (
+            <Alert variant="warning" key={idx}>
+              {message}
+            </Alert>
+          ))}
       </Form.Group>
-      {errors?.message?.map((message, idx) => (
-        <Alert variant="warning" key={idx}>
-          {message}
-        </Alert>
-      ))}
 
       <Button
         className={`${btnStyles.Button} ${btnStyles.Blue}`}
