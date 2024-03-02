@@ -27,7 +27,7 @@ function Category() {
         setCategories(response.data.results);
         setLoading(false); // Set loading to false when data is fetched
       } catch (error) {
-        console.error('Error fetching categories:', error);
+        // console.error('Error fetching categories:', error);
       }
     };
 
