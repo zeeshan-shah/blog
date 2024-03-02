@@ -48,7 +48,7 @@ function ContactEditForm() {
           // Contact ticket not found, redirect to the home page
           history.push('/');
         } else {
-          console.error('Error fetching contact ticket', error);
+          // console.error('Error fetching contact ticket', error);
         }
       }
     };
