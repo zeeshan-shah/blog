@@ -22,7 +22,7 @@ const Advertisements = () => {
           setAds(data.results);
         }
       } catch (error) {
-        console.error('Error fetching advertisements', error);
+        // console.error('Error fetching advertisements', error);
       }
     };
 
