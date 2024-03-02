@@ -11,7 +11,7 @@ const UpcomingBlogs = () => {
         const { data } = await axiosReq.get('/upcoming-blogs/');
         setBlogs(data);
       } catch (error) {
-        console.error('Error fetching upcoming blogs', error);
+        // console.error('Error fetching upcoming blogs', error);
       }
     };
 
