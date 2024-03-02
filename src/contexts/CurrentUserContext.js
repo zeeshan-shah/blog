@@ -19,7 +19,8 @@ export const CurrentUserProvider = ({ children }) => {
       const { data } = await axiosRes.get('dj-rest-auth/user/');
       setCurrentUser(data);
     } catch (err) {
-      // //console.log(err);
+      //console.log(err);
+      console.clear();
     }
   };
 
@@ -47,6 +48,7 @@ export const CurrentUserProvider = ({ children }) => {
         return config;
       },
       (err) => {
+        console.clear();
         return Promise.reject(err);
       },
     );
@@ -64,10 +66,12 @@ export const CurrentUserProvider = ({ children }) => {
               }
               return null;
             });
+            console.clear();
             removeTokenTimestamp();
           }
           return axios(err.config);
         }
+
         return Promise.reject(err);
       },
     );
