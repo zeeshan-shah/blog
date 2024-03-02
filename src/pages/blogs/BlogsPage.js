@@ -76,7 +76,7 @@ function BlogsPage({ message, filter = '' }) {
         }
       } catch (err) {
         // Handle errors
-        console.error(err);
+        // console.error(err);
         history.push('/');
       }
     };
