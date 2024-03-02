@@ -41,7 +41,7 @@ function BlogPage() {
           setComments(comments);
         }
       } catch (err) {
-        console.error(err);
+        // console.error(err);
         // Redirect to the home page if an error occurs (blog not found)
         history.push('/');
       }
