@@ -48,7 +48,7 @@ const ContactTicketsTable = ({ tickets, setTickets }) => {
           setLoading(false);
         }, 1000);
       } catch (err) {
-        console.error(err);
+        // console.error(err);
       }
     };
 
