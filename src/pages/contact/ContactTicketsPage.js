@@ -12,7 +12,7 @@ const ContactTicketsPage = ({ rerenderTickets }) => {
         const { data } = await axiosReq.get('/tickets/');
         setTickets(data.results);
       } catch (error) {
-        console.error('Error fetching contact tickets:', error);
+        // console.error('Error fetching contact tickets:', error);
       }
     };
 
