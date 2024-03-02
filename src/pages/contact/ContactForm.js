@@ -71,7 +71,7 @@ const ContactForm = ({ onFormSubmit }) => {
       setSubmitted(true);
       onFormSubmit();
     } catch (error) {
-      console.error('Error creating contact ticket:', error);
+      // console.error('Error creating contact ticket:', error);
       setErrors(
         error.response?.data || { general: 'Failed to create contact ticket' },
       );
