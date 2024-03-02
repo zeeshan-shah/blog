@@ -50,7 +50,7 @@ function UpcomingBlogsEditForm() {
           // Blog not found, redirect to the home page
           history.push('/');
         } else {
-          console.error('Error fetching upcoming blog', error);
+          // console.error('Error fetching upcoming blog', error);
         }
       }
     };
