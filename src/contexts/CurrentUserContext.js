@@ -20,7 +20,6 @@ export const CurrentUserProvider = ({ children }) => {
       setCurrentUser(data);
     } catch (err) {
       //console.log(err);
-      console.clear();
     }
   };
 
@@ -48,7 +47,6 @@ export const CurrentUserProvider = ({ children }) => {
         return config;
       },
       (err) => {
-        console.clear();
         return Promise.reject(err);
       },
     );
@@ -66,7 +64,6 @@ export const CurrentUserProvider = ({ children }) => {
               }
               return null;
             });
-            console.clear();
             removeTokenTimestamp();
           }
           return axios(err.config);
