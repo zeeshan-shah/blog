@@ -156,13 +156,16 @@ function UpcomingBlogsEditForm() {
   );
 
   return (
-    <Form onSubmit={handleSubmit}>
-      <Row>
-        {/* ... (other components) */}
-        <Container className={appStyles.Content}>{textFields}</Container>
-        {/* ... (other components) */}
-      </Row>
-    </Form>
+    <div style={{ marginTop: '80px', textAlign: 'center' }}>
+      <Form onSubmit={handleSubmit}>
+        <h2 className="text-center">Edit an upcoming blog</h2>
+        <Row>
+          {/* ... (other components) */}
+          <Container className={appStyles.Content}>{textFields}</Container>
+          {/* ... (other components) */}
+        </Row>
+      </Form>
+    </div>
   );
 }
 

@@ -132,14 +132,16 @@ function UpcomingBlogsCreateForm() {
   );
 
   return (
-    <Form onSubmit={handleSubmit}>
-      <h2 className="text-center">Add an upcoming blog</h2>
-      <Row>
-        {/* ... (other components) */}
-        <Container className={appStyles.Content}>{textFields}</Container>
-        {/* ... (other components) */}
-      </Row>
-    </Form>
+    <div style={{ marginTop: '80px', textAlign: 'center' }}>
+      <Form onSubmit={handleSubmit}>
+        <h2 className="text-center">Add an upcoming blog</h2>
+        <Row>
+          {/* ... (other components) */}
+          <Container className={appStyles.Content}>{textFields}</Container>
+          {/* ... (other components) */}
+        </Row>
+      </Form>
+    </div>
   );
 }
 
