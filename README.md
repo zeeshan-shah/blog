@@ -10,90 +10,100 @@ The live link for Blogify can be found [HERE](https://blog-pp5-28d8f080bed0.hero
 
 ## Project Goals
 
-The primary objective of this project is to develop a dynamic and user-centric blogging website, empowering individuals to create and manage their accounts and personalized profiles effortlessly. Upon registration, users gain immediate access to a feature-rich platform designed to facilitate seamless blogging experiences.
+- The primary objective of this project is to develop a dynamic and user-centric blogging website, empowering individuals to create and manage their accounts and personalized profiles effortlessly. Upon registration, users gain immediate access to a feature-rich platform designed to facilitate seamless blogging experiences.
 
-A key focus of our endeavor is to prioritize user experience, ensuring a transparent and intuitive interface that fosters ease of navigation and adoption. Through a meticulously crafted blog creation form, users can input their content details, including striking imagery, compelling titles, and categorization from a predefined list, with minimal friction.
+- A key focus of our endeavor is to prioritize user experience, ensuring a transparent and intuitive interface that fosters ease of navigation and adoption. Through a meticulously crafted blog creation form, users can input their content details, including striking imagery, compelling titles, and categorization from a predefined list, with minimal friction.
 
-In addition to facilitating personal expression, our platform serves as a vibrant community hub where users can engage with a diverse array of content curated by their peers. The ability to bookmark favorite blogs for later consumption and follow preferred bloggers fosters a sense of belonging and discovery within the community.
+- In addition to facilitating personal expression, our platform serves as a vibrant community hub where users can engage with a diverse array of content curated by their peers. The ability to bookmark favorite blogs for later consumption and follow preferred bloggers fosters a sense of belonging and discovery within the community.
 
-Furthermore, fostering meaningful interactions is paramount to our mission. Users are encouraged to share their thoughts and engage in discussions through comments, nurturing a culture of dialogue and collaboration. For any technical queries or support needs, a dedicated contact form ensures prompt assistance from our administrative team.
+- Furthermore, fostering meaningful interactions is paramount to our mission. Users are encouraged to share their thoughts and engage in discussions through comments, nurturing a culture of dialogue and collaboration. For any technical queries or support needs, a dedicated contact form ensures prompt assistance from our administrative team.
 
-At its essence, this project is driven by a commitment to democratize content creation and knowledge-sharing, providing a platform for talented bloggers to showcase their expertise and connect with a global audience. Together, we embark on a journey of empowerment, creativity, and collective growth.
+- At its essence, this project is driven by a commitment to democratize content creation and knowledge-sharing, providing a platform for talented bloggers to showcase their expertise and connect with a global audience. Together, we embark on a journey of empowerment, creativity, and collective growth.
 
 ## User Experience
 
 ### Typography:
 
-Font Selection:
+- **Font Selection:**
+
 For the blog project, a thoughtful combination of fonts is employed to enhance readability and aesthetic appeal. Headings (h1 to h6) are styled using the elegant 'Alice' font, providing a clean and modern look. Meanwhile, paragraphs and other text elements utilize a sans-serif fallback font to ensure consistency across different platforms and devices.
 
-Font Sizes:
+- **Font Sizes:**
+
 Font sizes are carefully chosen to establish a clear hierarchy and improve user experience. Headings are set to larger sizes to capture attention and guide readers through the content, while body text maintains a comfortable reading size for enhanced readability.
 
-Imagery:
+- **Imagery:**
+
 Images play a crucial role in complementing the textual content and engaging users visually. Within the blog, images are thoughtfully selected and optimized for web viewing, ensuring fast loading times and a seamless browsing experience.
 
-Content Styling:
+- **Content Styling:**
+
 The blog's content is presented in a clean and organized manner, with each post displayed within a bordered container to distinguish it from the background. Titles are prominently displayed at the center of each post, styled in a bold font with a color palette that complements the overall design aesthetic.
 
-Font Styles:
+- **Font Styles:**
+
 Typography choices, including font size and weight, are carefully curated to enhance the visual appeal of the blog. Titles feature a vibrant color (#DD7373) to draw attention, while other text elements maintain a consistent style for readability and coherence.
 
-Card Styles:
+- **Card Styles:**
+
 Each blog post is encapsulated within a card-like container, providing a structured layout that enhances readability and visual appeal. Images within the cards are sized and positioned to maintain consistency and ensure optimal viewing across devices.
 
-Interaction Styles:
+- **Interaction Styles:**
+
 Interactive elements, such as like buttons and hover effects, are implemented to enhance user engagement and interactivity. For example, the bookmark icon changes color on hover to provide visual feedback to users.
 
-Scrollbar Styling:
+- **Scrollbar Styling:**
+
 To ensure a seamless browsing experience, scrollbar styling is applied to maintain consistency with the overall design aesthetic. This includes customizing the scrollbar's appearance and behavior to align with the project's visual identity.
 
 ### Color
 
-Color Scheme:
+- Color Scheme:
 
-Text color: #000 or #DD7373
+- Text color: #000 or #DD7373
 
-Navbar background color: #ffffff
+- Navbar background color: #ffffff
 
-Button colors:
+- Button colors:
 
-    Blue: Background color #397367, text color #ffffff
+    - Blue: Background color #397367, text color #ffffff
 
-    BlueOutline: Background color #F9DB6D, text color #3C1518 (on hover: #3C1518)
+    - BlueOutline: Background color #F9DB6D, text color #3C1518 (on hover: #3C1518)
 
-    Black: Background color #242a3d, text color aliceblue
+    - Black: Background color #242a3d, text color aliceblue
 
-    BlackOutline: Background color aliceblue, text color #242a3d (on hover: #242a3d)
+    - BlackOutline: Background color aliceblue, text color #242a3d (on hover: #242a3d)
 
-    Bright: Background color #397367, text color #F9DB6D
+    - Bright: Background color #397367, text color #F9DB6D
 
 ![Color Scheme:](/documentation/images/colorscheme.png)
 
 ---
 ## Feature Overview
 
-This section serves to articulate the user stories for the project. User stories represent a vital aspect of the software development process, capturing the requirements from the end-users' perspective. They effectively delineate the functionality and features of the system, aligning with the users' needs and expectations.
+- This section serves to articulate the user stories for the project. User stories represent a vital aspect of the software development process, capturing the requirements from the end-users' perspective. They effectively delineate the functionality and features of the system, aligning with the users' needs and expectations.
 
 ### Agile Methodology
 
-The project adheres to Agile methodology, an iterative approach to software development that prioritizes collaboration, flexibility, and customer feedback. This methodology facilitates breaking down the development process into manageable increments, fostering continuous improvement and adaptability to evolving requirements.
+- The project adheres to Agile methodology, an iterative approach to software development that prioritizes collaboration, flexibility, and customer feedback. This methodology facilitates breaking down the development process into manageable increments, fostering continuous improvement and adaptability to evolving requirements.
 
 #### Kanban Board
 
-Employing a Kanban board, a visual management tool, enables efficient tracking and management of tasks as they progress through various stages of the development process. It provides stakeholders with a clear overview of tasks, their statuses, and identifies any potential bottlenecks in the workflow.
+- Employing a Kanban board, a visual management tool, enables efficient tracking and management of tasks as they progress through various stages of the development process. It provides stakeholders with a clear overview of tasks, their statuses, and identifies any potential bottlenecks in the workflow.
+
+Here is the link to the [Kanban board](https://github.com/users/zeeshan-shah/projects/5).
 
 #### MoSCoW Prioritization
 
-Utilizing MoSCoW prioritization aids in categorizing requirements into four distinct categories: Must have, Should have, Could have, and Won't have. This categorization ensures the prioritization of features and functionalities based on their significance and impact on the project's objectives.
+- Utilizing MoSCoW prioritization aids in categorizing requirements into four distinct categories: Must have, Should have, Could have, and Won't have. This categorization ensures the prioritization of features and functionalities based on their significance and impact on the project's objectives.
 
 #### Story Points
 
-Story points serve as a unit of measure within Agile project management, offering an estimation of the complexity and effort required to complete a user story. This relative estimation facilitates effective planning and prioritization of tasks, contributing to the project's overall success.
+- Story points serve as a unit of measure within Agile project management, offering an estimation of the complexity and effort required to complete a user story. This relative estimation facilitates effective planning and prioritization of tasks, contributing to the project's overall success.
 
 ### CRUD Functionality
 
-The system seamlessly manages data with complete CRUD functionality:
+- The system seamlessly manages data with complete CRUD functionality:
 
 - **Create**: Users are empowered to create various entities including accounts, profiles, tasks, comments, packs, contact messages, and watch objects, fostering engagement and interaction within the platform.
 
@@ -182,14 +192,14 @@ The system seamlessly manages data with complete CRUD functionality:
 
 ### Conclusion
 
-The user stories outlined above provide a comprehensive blueprint of the project's functionalities and features, meticulously prioritized using MoSCoW prioritization. Throughout the project's lifecycle, Agile methodologies, including the use of a Kanban board and story points for estimation and planning, have been instrumental in ensuring the project's success and alignment with stakeholders' needs and expectations.
+- The user stories outlined above provide a comprehensive blueprint of the project's functionalities and features, meticulously prioritized using MoSCoW prioritization. Throughout the project's lifecycle, Agile methodologies, including the use of a Kanban board and story points for estimation and planning, have been instrumental in ensuring the project's success and alignment with stakeholders' needs and expectations.
 
 ## Technology Stack
 
 ### Coding Languages
 
-- HTML5
-- CSS3
+- HTML
+- CSS
 - JavaScript
 
 ### Frameworks and Tools
@@ -222,7 +232,6 @@ The user stories outlined above provide a comprehensive blueprint of the project
 
 #### Design and Mockup Tools
 - **Balsamiq**: A wireframing tool for creating mockups and prototypes, utilized for designing the project's wireframes.
-- **Affinity Designer**: A professional graphic design software, used for creating custom graphics and images such as the 404 and no search results images.
 
 #### Accessibility and Validation Tools
 - **WC3 Validator**: HTML validator for ensuring compliance with web standards.
@@ -257,13 +266,16 @@ The user stories outlined above provide a comprehensive blueprint of the project
 | web-vitals                   | 1.1.2   |
 | yup                          | 1.3.3   |
 
-### Front-End Development Overview
+*Visit the Back-End Technologies at this [Link](https://github.com/zeeshan-shah/pp5-api)* 
+---
 
-#### React.js
+## Front-End Development Overview
 
-React.js, an open-source JavaScript library developed by Jordan Walke at Meta, stands as a prominent framework for constructing interactive user interfaces and web applications with remarkable efficiency and reduced code footprint compared to vanilla JavaScript.
+### React.js
 
-##### Key Reasons for Utilizing React:
+- React.js, an open-source JavaScript library developed by Jordan Walke at Meta, stands as a prominent framework for constructing interactive user interfaces and web applications with remarkable efficiency and reduced code footprint compared to vanilla JavaScript.
+
+#### Key Reasons for Utilizing React:
 
 - **Flexibility**: React's modular structure fosters code maintenance, ensuring ease of maintenance compared to alternative front-end frameworks.
   
@@ -275,7 +287,7 @@ React.js, an open-source JavaScript library developed by Jordan Walke at Meta, s
 
 - **Component Reusability**: React promotes component-based development, facilitating the creation and reuse of modular components across the application, thereby enhancing development efficiency and consistency.
 
-##### Notable Components Developed:
+#### Notable Components Developed:
 
 - `<Asset />`: A versatile component utilized for displaying a range of items based on passed props, including loading gifs, images, or messages. Utilized in various user stories.
   
@@ -285,8 +297,7 @@ React.js, an open-source JavaScript library developed by Jordan Walke at Meta, s
   
 - `<NavBar />`: A reusable navigation component providing seamless site navigation, dynamically adjusting icon display based on user login status.
 
-
-##### Page Groupings:
+#### Page Groupings:
 
 - **Auth**: Responsible for handling login and signup functionality.
 
@@ -308,17 +319,19 @@ React.js, an open-source JavaScript library developed by Jordan Walke at Meta, s
 
 - **Upcoming Blogs**: Handles the creation, editing, display, and deletion of the upcoming blogs table.
 
-### Back-End API
+## Back-End API
 
-#### Django REST Framework
+### Django REST Framework
 
-The Back-End API for this Front-End application was developed using the Django REST Framework (DRF), a powerful toolkit for building Web APIs in Python. For detailed information and access to the DRF Back-End repository, please refer to [this link](https://github.com/zeeshan-shah/pp5-api/).
+- The Back-End API for this Front-End application was developed using the Django REST Framework (DRF), a powerful toolkit for building Web APIs in Python. For detailed information and access to the DRF Back-End repository, please refer to [this link](https://github.com/zeeshan-shah/pp5-api/).
+
+---
 
 ## Features
 
 ### Architecture
 
-The website's architecture is meticulously structured to accommodate both authenticated and non-authenticated users, ensuring a seamless experience for all visitors. The user journey is delineated as follows:
+- The website's architecture is meticulously structured to accommodate both authenticated and non-authenticated users, ensuring a seamless experience for all visitors. The user journey is delineated as follows:
 
 ### Authentication Workflow:
 - **Registration:** Users can create an account seamlessly through the Register page.
@@ -645,6 +658,11 @@ All User Stories can be found [Here](https://github.com/users/zeeshan-shah/proje
 |   2    | User login | As a registered user, I can log in to my account so that I can access my personalized content and features. | As a registered user, I visit the site: `https://blog-pp5-28d8f080bed0.herokuapp.com/signin` and provide my username and password to authenticate. | :heavy_check_mark: |
 |   25   | Sign Out | As a logged-in user, I can sign out successfully so that I can securely end my session and protect my account. | As a logged-in user, I click on the `Sign Out` button in the navigation bar to log out. | :heavy_check_mark: |
 
+<details>
+    <summary>User Authorization</summary>
+    <img src="./documentation/images/signup.png" alt="Sign-up page">
+    <img src="./documentation/images/signin.png" alt="Sign-in page">
+</details>
 
 
 ## 2. EPIC: Blogs
@@ -656,6 +674,13 @@ All User Stories can be found [Here](https://github.com/users/zeeshan-shah/proje
 |   5    | Edit my blogs | As a logged-in user, I can update/edit my own blogs so that I can make changes or corrections to my published content. | As the owner of a blog, I can edit it anytime by opening the blog, clicking on the dropdown button on the top right side of the blog, clicking on the edit icon, and then making changes and updating the blog. | :heavy_check_mark: |
 |   6    | Delete my blogs | As a logged-in user, I can delete my blogs so that I can remove content that is no longer relevant or appropriate. | As the owner of a blog, I can delete my blogs at any time by clicking the dropdown icon on the blog, clicking on the delete icon, and confirming the deletion. | :heavy_check_mark: |
 
+<details>
+    <summary>Blog Handling</summary>
+    <img src="./documentation/images/viewblog.png" alt="view blogs">
+    <img src="./documentation/images/createblog.png" alt="create a blog">
+    <img src="./documentation/images/updateblog.png" alt="edit a blog">
+    <img src="./documentation/images/deleteblog.png" alt="delete a blog">
+</details>
 
 ## 3. EPIC: Profile
 
@@ -666,7 +691,13 @@ All User Stories can be found [Here](https://github.com/users/zeeshan-shah/proje
 |   23   | Follow Blogger | As a logged-in user, I can follow a blogger so that I can receive updates and notifications about their new content. | As a logged-in user, I can follow the profiles of other bloggers by clicking the `follow` button on their profiles. | :heavy_check_mark: |
 |   24   | Unfollow Blogger | As a logged-in user, I can unfollow a user so that I can stop receiving updates and notifications about their content. | As a logged-in user, I can unfollow the profiles of other bloggers by clicking the `unfollow` button on their profiles. | :heavy_check_mark: |
 
-
+<details>
+    <summary>Profile</summary>
+    <img src="./documentation/images/viewprofiles.png" alt="view profiles">
+    <img src="./documentation/images/updateprofile.png" alt="edit your profile">
+    <img src="./documentation/images/followprofile.png" alt="follow a profile">
+    <img src="./documentation/images/unfollowprofile.png" alt="unfollow a profile">
+</details>
 
 ## 4. EPIC: Upcoming Blogs
 
@@ -677,6 +708,12 @@ All User Stories can be found [Here](https://github.com/users/zeeshan-shah/proje
 |  10    | Edit my upcoming blog entry | As a logged-in user, I can update/edit the entry that I created in the upcoming blog so that I can make changes or corrections to my planned content. | As the creator of the upcoming blog entry, I can edit the item by clicking the `edit` button shown in the upcoming blog table under the `action` column, make changes, and update it. | :heavy_check_mark: |
 |  11    | Delete my upcoming blog entry | As a logged-in user, I can delete my entry in the upcoming blog table so that I can remove content that is no longer relevant or appropriate. | As the creator of the upcoming blog entry, I can delete the item by clicking the `delete` button shown in the upcoming blog table under the `action` column and confirming the deletion. | :heavy_check_mark: |
 
+<details>
+    <summary>Upcoming Blogs Handling</summary>
+    <img src="./documentation/images/createupcomingblogs.png" alt="create an upcoming blog">
+    <img src="./documentation/images/viewupcomingblogs.png" alt="create an upcoming blog">
+    <img src="./documentation/images/editanddeleteupcomingblogs.png" alt="edit or delete an upcoming blog">
+</details>
 
 ## 5. EPIC: Contact Admin
 
@@ -687,6 +724,12 @@ All User Stories can be found [Here](https://github.com/users/zeeshan-shah/proje
 |   14   | Edit tickets | As a logged-in user, I can update/edit my contact ticket so that I can provide additional information or make changes to my inquiries. | As a logged-in user, I can edit my contact tickets by clicking on the `edit` button on the relevant ticket in the contact ticket table on `https://blog-pp5-28d8f080bed0.herokuapp.com/tickets`, update the desired data, and click the `update` button to make the update. The updated contact ticket will be shown in the `Contact Tickets` table below the contact form. | :heavy_check_mark: |
 |   15   | Delete tickets | As a logged-in user, I can delete my ticket so that I can remove inquiries that are no longer needed or relevant. | As a logged-in user, I can delete my contact tickets by clicking on the `delete` button on the relevant ticket in the contact ticket table on `https://blog-pp5-28d8f080bed0.herokuapp.com/tickets` and confirm the deletion. The deleted contact ticket will be removed from the `Contact Tickets` table. | :heavy_check_mark: |
 
+<details>
+    <summary>Contact Form</summary>
+    <img src="./documentation/images/contactadmin.png" alt="contact admin">
+    <img src="./documentation/images/viewtickets.png" alt="view tickets">
+    <img src="./documentation/images/editanddeletetickets.png" alt="edit or delete tickets">
+</details>
 
 ## 6. EPIC: Homepage
 
@@ -695,6 +738,10 @@ All User Stories can be found [Here](https://github.com/users/zeeshan-shah/proje
 |   16   | Homepage | As a user, I want an updated home page where I can see new featured blogs so that I can discover new content easily. | As a user, I can view the featured blogs on the homepage, which motivates me to register myself on the website. | :heavy_check_mark: |
 |   17   | Easy Functionality Access | As a user, I can access functionality easily throughout the website so that I can navigate and use the platform efficiently. | As a user, I can easily access and navigate anywhere on the site. There are buttons such as `Compose Blog`, `Create Upcoming Blog`, and buttons on the navigation bar such as `Contact`, `Categories`, and `Profile [Username]`, making the homepage the center of all functions. | :heavy_check_mark: |
 
+<details>
+    <summary>Home Page</summary>
+    <img src="./documentation/images/homepage.png" alt="home page">
+</details>
 
 
 ## 7. EPIC: Comment
@@ -706,6 +753,12 @@ All User Stories can be found [Here](https://github.com/users/zeeshan-shah/proje
 |   20   | Read Blog Comments | As a user, I can read the comments on a blog so that I can see the discussions and interactions related to the content. | As a user, I can read comments on the blogs by simply opening a blog and scrolling down to the comment section. | :heavy_check_mark: |
 |   21   | Delete Comment | As a logged-in user, I can delete my comments so that I can remove contributions that are no longer needed or appropriate. | As a logged-in user, I can easily delete my comments by clicking the dropdown icon on the right side of the comment, selecting the delete button, and confirming deletion. | :heavy_check_mark: |
 
+<details>
+    <summary>Comments Handling</summary>
+    <img src="./documentation/images/addcomment.png" alt="add a comment">
+    <img src="./documentation/images/editcomment.png" alt="edit a comment">
+    <img src="./documentation/images/deletecomment.png" alt="delete a comment">
+</details>
 
 ## 8. EPIC: Bookmarking
 
@@ -715,12 +768,50 @@ All User Stories can be found [Here](https://github.com/users/zeeshan-shah/proje
 |   27   | Viewing Bookmarked Blogs | As a user, I can view the list of all my bookmarked blogs so that I can easily access them when I want to read them. | As a logged-in user, I can easily access my bookmarked blogs by clicking the `Bookmarked` button in the navigation bar. | :heavy_check_mark: |
 |   28   | Removing Bookmarks | As a user, I can remove a bookmark from a blog that I've previously saved so that I can manage my list of bookmarked blogs and remove unwanted ones. | As a logged-in user, I can un-bookmark blogs by simply clicking the `Bookmark` icon again on the bookmarked blog. | :heavy_check_mark: |
 
+<details>
+    <summary>Blogs Bookmarking</summary>
+    <img src="./documentation/images/bookmarkblog.png" alt="bookmark a blog">
+    <img src="./documentation/images/viewbookmarkedblogs.png" alt="view bookmarked blogs">
+</details>
 
 ## 9. EPIC: Advertisement
 
 | **ID** | **User Story** | **As a...** | **Action/Expected Result** | **Pass/Fail** |
 |--------|----------------|-------------|-----------------------------|---------------|
 |   29   | Contact Admin for Ad Queries | As a logged-in user, I can contact the admin for advertisement queries so that I can get information or assistance regarding ads. | As a logged-in user, I can contact the admin regarding advertisement queries via the contact form. I choose `Advertise With Us` in the category of the contact form or click on the `Contact Us` button in the advertisement banner. | :heavy_check_mark: |
+
+<details>
+    <summary>Advertisement</summary>
+    <img src="./documentation/images/adcontact.png" alt="contact regarding ads">
+    <img src="./documentation/images/adcategory.png" alt="advertisement as category in contact form">
+</details>
+
+### Bugs
+
+#### Solved Bugs
+
+1. There was a bug in profile image updating. When a user clicks on the `change the image` button and selects an image, then clicks again on the `change the image` button without selecting a new image and cancels it, it correctly shows the previously selected image. However, when the user clicks on the save button, it didn't update the profile image. To resolve this bug, I introduced another state, `selected image`, in my code, which resolved the issue. Screenshots can be used to understand the bug.
+
+<details>
+    <summary>Solved Bug</summary>
+    <img src="./documentation/images/bug1.png" alt="bug image 1">
+    <img src="./documentation/images/bug2.png" alt="bug image 2">
+    <img src="./documentation/images/bug3.png" alt="bug image 3">
+    <img src="./documentation/images/bug4.png" alt="bug image 4">
+    <img src="./documentation/images/bug5.png" alt="bug image 5">
+    <img src="./documentation/images/bug6.png" alt="bug image 6">
+    <img src="./documentation/images/bug7.png" alt="bug image 7">
+</details>
+
+#### Unsolved Bugs
+
+1. As this bug is also present in the walkthrough project and the instructor advised to ignore it, I still want to discuss the bug. When an unauthenticated user tries to access the site, the API sends a refresh token request. However, it fails due to the fact that the user is not logged in. I tried to solve this error by first identifying the cause of the error logged in the console. After trying different methods, I attempted to clear the console by using `console.clear()`. However, after implementing this, the message "console was cleared" was logged into the console, which looked unprofessional. Therefore, I undid my implementation and left the bug as it was mentioned in the walkthrough project.
+
+<details>
+    <summary>Unsolved Bug</summary>
+    <img src="./documentation/images/bug8.png" alt="bug image 8">
+    <img src="./documentation/images/bug9.png" alt="bug image 9">
+</details>
 
 ## Deployment
 
@@ -794,7 +885,9 @@ Before deploying to Heroku, ensure the following steps are completed:
 - The code for this project was written with the guidance of Code Institute's walkthrough project [drf-api](https://github.com/Code-Institute-Solutions/drf-api).
 
 - [GitHub](https://github.com/): I drew inspiration for the project's design from GitHub.
-  
+
+- [Heroku](https://www.heroku.com/): The project is hosted on Heroku, a cloud platform as a service supporting several programming languages.
+
 - [Font Awesome](https://fontawesome.com/): I utilized Font Awesome for its extensive collection of free icons, enhancing the visual appeal of my project.
   
 - [Google Fonts](https://fonts.google.com/): I leveraged Google Fonts to access a wide variety of free fonts, contributing to the project's aesthetic appeal.
@@ -811,4 +904,4 @@ Before deploying to Heroku, ensure the following steps are completed:
 
 Special thanks to:
 
-- [Julia Nelson](https://github.com/IuliiaKonovalova/): My mentor at Code Institute, whose guidance, tips, and feedback were invaluable throughout the project's development journey.
+- [Julia Konovalova](https://github.com/IuliiaKonovalova/): My mentor at Code Institute, whose guidance, tips, and feedback were invaluable throughout the project's development journey.
