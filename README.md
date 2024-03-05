@@ -626,15 +626,22 @@ While conducting Lighthouse validation, it's important to acknowledge certain fa
 
 </details>
 
+#### Wave Validation
+
+The project underwent accessibility validation using the Wave tool, ensuring compliance with accessibility standards. No errors were found during the validation process, confirming the project's accessibility compliance and usability for all users.
+
+<details>
+    <summary>View Wave Results</summary>
+    ![Wave Validation](documentation/images/wave.png)
+</details>
+
 #### ESLint Validation
 
 ESLint, a popular JavaScript linter, was utilized to ensure code consistency and identify potential issues in the project's JavaScript files. The validation process revealed no errors.
 
 <details>
-<summary>View ESLint Results</summary>
-
-![ESLint Validation](documentation/images/ESLint.png)
-
+    <summary>View ESLint Results</summary>
+    ![ESLint Validation](documentation/images/ESLint.png)
 </details>
 
 ### Explanation
